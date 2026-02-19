@@ -3,6 +3,8 @@ import { Component, inject, signal, computed, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router'; 
 import { AuthService } from '../auth/auth.service';
 import { HttpClient } from '@angular/common/http';
+
+import { ApiService } from '../services/api';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -12,6 +14,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class Dashboard  implements OnInit {
   private http = inject(HttpClient);
+  private apiService = inject(ApiService);
   private authService = inject(AuthService);
   private router = inject(Router);
   messages = signal<any[]>([]);
@@ -24,8 +27,7 @@ export class Dashboard  implements OnInit {
   }
 
   loadMessages() {
-    this.http.get<any[]>('http://localhost:3000/api/admin/messagesnotreplied')
-      .subscribe(data => this.messages.set(data));
+     this.apiService.getMessagesNotReplied().subscribe(data => this.messages.set(data));
   }
 
   logout() {

@@ -5,6 +5,8 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProjectService } from '../services/project.service';
 import { Project } from '../models/project.model';
 
+import { ApiService } from '../services/api';
+
 @Component({
   selector: 'app-manageprojects',
   standalone: true,
@@ -14,6 +16,7 @@ import { Project } from '../models/project.model';
 })
 export class Manageprojects implements OnInit {
   private fb = inject(FormBuilder);
+  private apiService = inject(ApiService);
   projectService = inject(ProjectService);
 
   isModalOpen = signal(false);

@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { ApiService } from '../services/api';
 export interface Profile {
   id?: number;
   full_name: string;
@@ -15,7 +15,11 @@ export interface Profile {
 @Injectable({ providedIn: 'root' })
 export class ProfileService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:3000/api/profile';
+
+ private api = inject(ApiService);
+ private get apiUrl() {
+    return `${this.api.baseUrl}/profile`;
+  }
 
   getProfile(): Observable<Profile> {
     return this.http.get<Profile>(this.apiUrl);
@@ -25,6 +29,6 @@ export class ProfileService {
 
   updateProfile(id: number | string, data: any): Observable<any> {
   // We use the ID in the URL and the data in the Body
-  return this.http.put(`http://localhost:3000/api/profile/${id}`, data);
+  return this.http.put(`${this.apiUrl}/${id}`, data);
 }
 }

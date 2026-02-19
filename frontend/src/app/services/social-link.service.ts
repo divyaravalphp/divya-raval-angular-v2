@@ -2,10 +2,15 @@ import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SocialLink } from '../models/social-link.model';
 
+
+import { ApiService } from './api';
 @Injectable({ providedIn: 'root' })
 export class SocialLinkService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:3000/api/social-links';
+  private api = inject(ApiService); 
+  private get apiUrl() {
+    return `${this.api.baseUrl}/social-links`;
+  } 
   
   links = signal<SocialLink[]>([]);
 

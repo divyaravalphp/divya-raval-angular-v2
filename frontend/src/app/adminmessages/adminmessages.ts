@@ -2,7 +2,7 @@ import { Component, inject, signal, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { ApiService } from '../services/api';
 @Component({
   selector: 'app-admin-messages',
   standalone: true,
@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 }) 
 export class AdminMessages implements OnInit {
   private http = inject(HttpClient);
+  private apiService = inject(ApiService);
   
   messages = signal<any[]>([]);
   activeReplyId = signal<number | null>(null);
@@ -22,8 +23,7 @@ export class AdminMessages implements OnInit {
   }
 
   loadMessages() {
-    this.http.get<any[]>('http://localhost:3000/api/admin/messages')
-      .subscribe(data => this.messages.set(data));
+    this.apiService.getMessages().subscribe(data => this.messages.set(data));
   }
 
   sendReply(msg: any) {
@@ -32,8 +32,7 @@ export class AdminMessages implements OnInit {
       email: msg.email,
       replyText: this.replyContent
     };
-
-    this.http.post('http://localhost:3000/api/admin/reply', payload).subscribe({
+this.apiService.sendAdminReply(payload).subscribe({
       next: () => {
         alert('Reply Sent!');
         this.replyContent = '';

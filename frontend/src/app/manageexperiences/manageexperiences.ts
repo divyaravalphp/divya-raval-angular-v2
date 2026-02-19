@@ -2,7 +2,7 @@ import { Component, signal, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-
+import { ApiService } from '../services/api'; // Import your service
 @Component({
   selector: 'app-manage-experiences',
   standalone: true,
@@ -13,9 +13,9 @@ import { CommonModule } from '@angular/common';
 export class Manageexperiences implements OnInit {
   private fb = inject(FormBuilder);
   private http = inject(HttpClient);
-  
+  private apiService = inject(ApiService);
   // Use absolute URL to match your server.js port (3000)
-  private apiUrl = 'http://localhost:3000/api/experiences'; 
+   
 
   experiences = signal<any[]>([]);
   isModalOpen = signal(false);
@@ -38,7 +38,7 @@ export class Manageexperiences implements OnInit {
   }
 
   fetchData() {
-    this.http.get<any[]>(this.apiUrl).subscribe({
+    this.apiService.getExperiences().subscribe({
       next: (data) => this.experiences.set(data),
       error: (err) => console.error('Fetch error:', err)
     });
@@ -77,8 +77,8 @@ export class Manageexperiences implements OnInit {
     };
 
     const request = this.editMode() 
-      ? this.http.put(`${this.apiUrl}/${this.selectedId()}`, payload)
-      : this.http.post(this.apiUrl, payload);
+      ? this.apiService.updateExperience(this.selectedId()!, payload)
+      : this.apiService.createExperience(payload);
 
     request.subscribe({
       next: () => {
@@ -91,7 +91,7 @@ export class Manageexperiences implements OnInit {
 
   delete(id: number) {
     if (confirm('Delete this record?')) {
-      this.http.delete(`${this.apiUrl}/${id}`).subscribe({
+     this.apiService.deleteExperience(id).subscribe({
         next: () => this.fetchData(),
         error: (err) => console.error('Delete error:', err)
       });

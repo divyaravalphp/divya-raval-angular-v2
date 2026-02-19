@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
+import { ApiService } from '../services/api';
+
 @Component({
   selector: 'app-personalinfo',
   standalone: true,
@@ -13,6 +15,7 @@ import { CommonModule } from '@angular/common';
 export class Personalinfo implements OnInit {
   private fb = inject(FormBuilder);
   private http = inject(HttpClient);
+  private apiService = inject(ApiService);
   currentResume: string | null = null;
   currentPhoto: string | null = null;
   selectedPhoto: File | null = null;
@@ -43,7 +46,7 @@ export class Personalinfo implements OnInit {
   }
 
   fetchProfile() {
-  this.http.get<any>('http://localhost:3000/api/profile').subscribe({
+  this.apiService.getProfile().subscribe({
     next: (data) => {
       this.profileForm.patchValue(data);
       this.currentResume = data.resume; // Store the filename from the 'resume' column
@@ -90,7 +93,7 @@ onSubmit() {
 
   const id = this.profileForm.get('id')?.value;
   
-  this.http.put(`http://localhost:3000/api/profile/${id}`, formData).subscribe({
+  this.apiService.updateProfile(id, formData).subscribe({
     next: (res: any) => {
       this.successMsg.set('Profile updated successfully!');
       this.isSubmitting.set(false);
