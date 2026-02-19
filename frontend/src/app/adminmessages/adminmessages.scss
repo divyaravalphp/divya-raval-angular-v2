@@ -1,0 +1,255 @@
+/* Theme Variables */
+:host {
+  --teal-dark: #004d40;
+  --teal-primary: #008080;
+  --teal-accent: #4db6ac;
+  --teal-light: #e0f2f1;
+  --white: #ffffff;
+  --bg-body: #f4f7f6;
+  --text-main: #333333;
+  --text-muted: #666666;
+  --border-color: #e0eeee;
+  --shadow-sm: 0 2px 8px rgba(0, 128, 128, 0.05);
+  --shadow-md: 0 10px 25px rgba(0, 77, 64, 0.08);
+}
+
+.admin-panel {
+  max-width: auto;
+  margin: 0px auto;
+  padding: 0px;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  h2 {
+    color: var(--teal-dark);
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    border-bottom: 3px solid var(--teal-primary);
+    display: inline-block;
+    padding-bottom: 5px;
+  }
+}
+
+/* Message List Container */
+.message-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Individual Message Card */
+.message-card {
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  /* Left accent bar */
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background-color: var(--teal-primary);
+  }
+
+  /* Style for messages already replied to */
+  &.replied {
+    background-color: #fafafa;
+    opacity: 0.9;
+    
+    &::before {
+      background-color: #cbd5e0; /* Gray for replied */
+    }
+
+    .content {
+      color: var(--text-muted);
+      font-style: italic;
+    }
+  }
+}
+
+/* Header within Card */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+
+  strong {
+    font-size: 1.1rem;
+    color: var(--teal-dark);
+  }
+
+  .date {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    background: var(--teal-light);
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+}
+
+.content {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-main);
+  margin: 15px 0;
+  padding: 10px;
+  background: rgba(224, 242, 241, 0.3);
+  border-radius: 6px;
+}
+
+small {
+  display: block;
+  color: var(--teal-primary);
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+/* Actions Area */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    background: var(--teal-primary);
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+      background: var(--teal-dark);
+    }
+  }
+
+  .status-badge {
+    background: #edf2f7;
+    color: #4a5568;
+    padding: 6px 15px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    
+    &::before {
+      content: '✓';
+      margin-right: 6px;
+      color: #38a169;
+    }
+  }
+}
+
+/* Reply Interactive Box */
+.reply-box {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+  animation: slideDown 0.3s ease-out;
+
+  textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 15px;
+    border: 2px solid var(--teal-light);
+    border-radius: 8px;
+    outline: none;
+    font-family: inherit;
+    resize: vertical;
+    transition: border-color 0.2s;
+
+    &:focus {
+      border-color: var(--teal-accent);
+    }
+  }
+
+  .btn-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+    justify-content: flex-end;
+
+    .send-btn {
+      background: var(--teal-dark);
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+
+      &:hover {
+        background: black;
+      }
+    }
+
+    .cancel-btn {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid #ddd;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+
+      &:hover {
+        background: #f5f5f5;
+      }
+    }
+  }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reply-history {
+  margin: 15px 0;
+  padding: 15px;
+  background-color: #f0fdfa; /* Very light teal */
+  border-left: 3px solid var(--teal-accent);
+  border-radius: 4px;
+  animation: fadeIn 0.4s ease;
+
+  .reply-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--teal-dark);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .reply-content {
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.5;
+    margin: 0;
+    white-space: pre-wrap; /* Preserves line breaks from the textarea */
+  }
+}
+
+/* Ensure the card looks consistent when replied */
+.message-card.replied {
+  .reply-history {
+    background-color: #f8fafc; /* Slightly more neutral when done */
+    border-left-color: #cbd5e0; 
+  }
+}

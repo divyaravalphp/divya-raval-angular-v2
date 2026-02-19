@@ -1,0 +1,50 @@
+<section class="experience-container page-section bg-teal-light">
+  <div class="header-content">
+    <span class="top-label">CAREER PATH</span>
+    <h2 class="title">Work Experience</h2>
+    <div class="title-underline"></div>
+  </div>
+
+  <div class="timeline-wrapper">
+    <div class="timeline-line"></div>
+
+    <div class="job-card" *ngFor="let job of workHistory()">
+      <div class="timeline-dot"></div>
+
+      <div class="job-header">
+        <div class="role-group">
+          <h3 class="role">{{ job.role }}</h3>
+          <span class="company">{{ job.company }}</span>
+        </div>
+        <div class="meta-group">
+          <span class="period badge-teal">{{ job.period }}</span>
+          <span class="location">
+            <span class="pin">📍</span> {{ job.location }}
+          </span>
+        </div>
+      </div>
+
+      <p class="description">{{ job.description }}</p>
+
+      <div class="extra-details">
+        <div class="list-section">
+          <h4><span class="icon">🚀</span> Key Projects</h4>
+          <ul>
+            <li *ngFor="let project of job.projects">
+              {{ project }}
+            </li>
+          </ul>
+        </div>
+
+        <div class="list-section">
+          <h4><span class="icon">🏆</span> Key Achievements</h4>
+          <ul>
+            <li *ngFor="let ach of job.achievements">
+              {{ ach }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,73 @@
+<div class="home-wrapper page-section bg-teal-light" *ngIf="profileData() as profile " >
+  <section class="hero-section">
+    <div class="container hero-container">
+      
+      <div class="hero-text">
+        <span class="badge">{{ profile.current_title }}</span>
+        <h1>{{ profile.full_name }}</h1>
+        <p class="tagline">
+         {{ profile.summary }}
+        </p>
+        <div class="cta-group">
+         
+         <a *ngIf="profile.resume"
+            [href]="'http://localhost:3000/public/resumes/' + profile.resume" 
+            [download]="profile.resume" 
+            class="btn-outline">
+            Download CV
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-image-area">
+        <div class="image-stack">
+          <img *ngIf="profile.photo" [src]="'http://localhost:3000/public/resumes/' + profile.photo"  alt="Divya Raval" class="main-profile-img">
+          <div class="floating-card experience">
+            <span class="stat-num">{{ profile.experience_years }}+</span>
+            <span class="stat-desc">Years Exp.</span>
+          </div>
+          <div class="floating-card tech">
+            <span class="stat-desc">Expert in</span>
+            <span class="stat-num">PHP</span>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <section class="stats-bar">
+    <div class="container stats-flex">
+      <div class="stat-item">
+        <strong>190+</strong>
+        <span>Countries Impacted (ICCR)</span>
+      </div>
+      <div class="stat-item">
+        <strong>1.5K+</strong>
+        <span>Units Managed (GDMA)</span>
+      </div>
+      <div class="stat-item">
+        <strong>100%</strong>
+        <span>Remote Ready</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="featured-work container">
+    <h2 style="text-align: center;">Strategic Solutions</h2>
+    <div class="work-grid">
+      <div class="work-card">
+        <h3>Gov-Tech Portals</h3>
+        <p>Architected high-security portals for the Ministry of Ayush and ICCR.</p>
+      </div>
+      <div class="work-card">
+        <h3>Fintech & PMS</h3>
+        <p>Engineered automated billing and property management systems like Fincasys.</p>
+      </div>
+      <div class="work-card">
+        <h3>AI & Engagement</h3>
+        <p>Integrated AI-matching and geo-tagging for the Zoobiz platform.</p>
+      </div>
+    </div>
+  </section>
+</div>

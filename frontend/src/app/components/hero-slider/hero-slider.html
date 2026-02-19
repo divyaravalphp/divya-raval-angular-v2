@@ -1,0 +1,21 @@
+<swiper-container 
+  navigation="true" 
+  pagination="true" 
+  loop="true" 
+  autoplay="true" 
+  autoplay-delay="5000" 
+  autoplay-disable-on-interaction="false">
+  
+  <swiper-slide *ngFor="let slide of slides" [style.background-color]="slide.bg">
+    <div class="slide-content">
+      <h1>{{ slide.title }}</h1>
+      <p>{{ slide.desc }}</p>
+      
+      <a [href]="profile_info.cv_path" 
+         [download]="profile_info.cv_filename" 
+         class="btn-teal">
+        Download CV
+      </a>
+    </div>
+  </swiper-slide>
+</swiper-container>

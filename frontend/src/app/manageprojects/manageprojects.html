@@ -1,0 +1,74 @@
+<div class="admin-container">
+  <div class="header-section">
+    <h2>Project Management</h2>
+    <button (click)="openModal()" class="btn-teal">Add New Project</button>
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Category</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (p of projectService.projects(); track p.id) {
+          <tr>
+            <td><strong>{{ p.title }}</strong></td>
+            <td>{{ p.category }}</td>
+            <td><span class="badge" [attr.data-status]="p.status">{{ p.status }}</span></td>
+            <td>
+              <button (click)="openModal(p)" class="btn-edit">Edit</button>
+              <button (click)="delete(p.id!)" class="btn-delete">Delete</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+
+@if (isModalOpen()) {
+  <div class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>{{ editMode() ? 'Edit Project' : 'New Project' }}</h3>
+        <button (click)="isModalOpen.set(false)">×</button>
+      </div>
+      
+      <form [formGroup]="projectForm" (ngSubmit)="save()" class="modal-form">
+        <input formControlName="title" placeholder="Project Title">
+        
+        <div class="form-row">
+          <input formControlName="company" placeholder="Company Name">
+          <input formControlName="category" placeholder="Category (e.g. FinTech)">
+        </div>
+
+        <div class="form-row">
+          <input formControlName="type_class" placeholder="Type (e.g. Web App)">
+          <input formControlName="link" placeholder="Project Link (URL)">
+        </div>
+
+        <textarea formControlName="description" placeholder="Project Description"></textarea>
+        
+        <input formControlName="features" placeholder="Features (comma separated)">
+        
+        <select formControlName="status">
+          <option value="development">Development</option>
+          <option value="active">Active</option>
+          <option value="archived">Archived</option>
+        </select>
+
+        <div class="modal-actions">
+          <button type="button" (click)="isModalOpen.set(false)">Cancel</button>
+          <button type="submit" class="btn-teal" [disabled]="projectForm.invalid">
+            {{ editMode() ? 'Update Project' : 'Save Project' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+}

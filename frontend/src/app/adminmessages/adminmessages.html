@@ -1,0 +1,44 @@
+<section class="admin-panel">
+  <h2>Inbox Messages</h2>
+
+  <div class="message-list">
+    @for (msg of messages(); track msg.id) {
+      <div class="message-card" [class.replied]="msg.replied_at">
+        <div class="card-header">
+          <strong>{{ msg.name }}</strong> 
+          <span class="date">{{ msg.submitted_at | date:'short' }}</span>
+        </div>
+        
+        <p class="content">"{{ msg.message }}"</p>
+        <small>From: {{ msg.email }} | Phone: {{ msg.phone }}</small>
+
+        @if (msg.reply_text) {
+          <div class="reply-history">
+            <div class="reply-label">
+              <span class="icon">✉️</span> Your Response:
+            </div>
+            <p class="reply-content">{{ msg.reply_text }}</p>
+          </div>
+        }
+
+        <div class="actions">
+          @if (msg.replied_at) {
+            <div class="status-badge">Replied on {{ msg.replied_at | date:'short' }}</div>
+          } @else {
+            <button (click)="activeReplyId.set(msg.id)">Write Reply</button>
+          }
+        </div>
+
+        @if (activeReplyId() === msg.id) {
+          <div class="reply-box">
+            <textarea [(ngModel)]="replyContent" placeholder="Type your response..."></textarea>
+            <div class="btn-group">
+              <button class="send-btn" (click)="sendReply(msg)">Send Email</button>
+              <button class="cancel-btn" (click)="activeReplyId.set(null)">Cancel</button>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</section>

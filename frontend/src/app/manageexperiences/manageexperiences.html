@@ -1,0 +1,104 @@
+<div class="admin-container">
+  <div class="header-section">
+    <div class="title-group">
+      <h2>Experience Management</h2>
+      <p>Manage your professional career history</p>
+    </div>
+    <button (click)="openModal()" class="btn-teal">
+      <span class="plus-icon">+</span> Add Experience
+    </button>
+  </div>
+
+  <div class="table-card">
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>Role</th>
+            <th>Duration</th>
+            <th>Location</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (p of experiences(); track p.id) {
+            <tr>
+              <td><span class="company-badge">{{ p.company }}</span></td>
+              <td><strong>{{ p.role }}</strong></td>
+              <td class="date-cell">{{ p.period_start }} — {{ p.period_end || 'Present' }}</td>
+              <td><span class="location-tag">{{ p.location }}</span></td>
+              <td class="actions-cell">
+                <button (click)="openModal(p)" class="btn-action edit" title="Edit">✎</button>
+                <button (click)="delete(p.id!)" class="btn-action delete" title="Delete">🗑</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+@if (isModalOpen()) {
+  <div class="modal-backdrop" (click)="isModalOpen.set(false)">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h3>{{ editMode() ? 'Edit Experience' : 'New Experience' }}</h3>
+        <button class="close-btn" (click)="isModalOpen.set(false)">×</button>
+      </div>
+      
+      <form [formGroup]="projectForm" (ngSubmit)="save()" class="modal-form">
+        <div class="form-row">
+          <div class="input-group">
+            <label>Professional Role</label>
+            <input formControlName="role" placeholder="e.g. Senior PHP Developer">
+          </div>
+          <div class="input-group">
+            <label>Company</label>
+            <input formControlName="company" placeholder="e.g. Google">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="input-group">
+            <label>Start Month/Year</label>
+            <input type="month" formControlName="period_start">
+          </div>
+          <div class="input-group">
+            <label>End Month/Year</label>
+            <input type="month" formControlName="period_end">
+            <small>Leave blank if currently working here</small>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label>Location</label>
+          <input formControlName="location" placeholder="e.g. Remote, New York, US">
+        </div>
+
+        <div class="input-group">
+          <label>Work Description</label>
+          <textarea formControlName="description" rows="4" placeholder="Describe your responsibilities..."></textarea>
+        </div>
+        
+        <div class="input-group">
+          <label>Projects (Comma separated)</label>
+          <input formControlName="projects" placeholder="Project A, Project B">
+        </div>
+
+        <div class="input-group">
+          <label>Key Achievements (Comma separated)</label>
+          <input formControlName="achievements" placeholder="Increased speed by 20%, Led a team of 5">
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn-cancel" (click)="isModalOpen.set(false)">Cancel</button>
+          <button type="submit" class="btn-teal-submit" [disabled]="projectForm.invalid">
+            {{ editMode() ? 'Update Experience' : 'Save Experience' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+}

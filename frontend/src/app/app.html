@@ -1,0 +1,60 @@
+@if (!isLoggedIn()  ) {
+<app-header></app-header>
+<!-- <nav class="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <span class="name">DIVYA RAVAL</span>
+      <span class="role">(PHP/LARAVEL DEVELOPER)</span>
+    </div>
+    
+    <ul class="nav-links">
+      @for (item of menuItems; track item.label) {
+        <li>
+          <a [routerLink]="item.path" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: item.path === '/'}">
+            {{ item.label }}
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+</nav> -->
+
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <span class="name">DIVYA RAVAL</span>
+      <span class="role">(PHP/LARAVEL DEVELOPER)</span>
+    </div>
+
+    <button class="menu-toggle" (click)="toggleMenu()" [class.active]="isMenuOpen">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    
+    <ul class="nav-links" [class.open]="isMenuOpen">
+      @for (item of menuItems; track item.label) {
+        <li>
+          <a [routerLink]="item.path" 
+             routerLinkActive="active-link" 
+             [routerLinkActiveOptions]="{exact: item.path === '/'}"
+             (click)="isMenuOpen = false">
+            {{ item.label }}
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+</nav>
+
+<app-hero-slider></app-hero-slider>
+}
+<main class="content-area">
+  <router-outlet>
+
+
+  </router-outlet>
+</main>
+@if (!isLoggedIn()) {
+<app-footer></app-footer>
+}

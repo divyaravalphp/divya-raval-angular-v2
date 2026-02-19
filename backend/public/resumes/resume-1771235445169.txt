@@ -1,0 +1,126 @@
+Divya Raval
+PHP Developer
+
+PERSONAL DETAILS
++91 9725528865
+ravaldivyaks@gmail.com
+Sanand, Ahmedabad, India
+LinkedIn: https://www.linkedin.com/in/divya-raval-672594149/
+GitHub: https://github.com/divyaravalphp
+
+CAREER OBJECTIVE
+Results-driven Senior Software Developer with 7 years of experience in delivering high-impact digital solutions; seeking a PHP Developer position to leverage expertise in PHP frameworks (Laravel, CodeIgniter), MySQL, and RESTful API design to build scalable, user-centric applications and enhance software development processes within the Computer Software/Engineering industry. Aiming to contribute to innovative projects and drive significant improvements in system efficiency and user satisfaction.
+
+PROFESSIONAL SUMMARY
+1) Over 7 years of experience in full-stack software development, specializing in PHP, MySQL, and JavaScript, with a proven track record of delivering high-impact digital solutions.Expertise in architecting and developing scalable web applications and RESTful APIs, contributing to improved system efficiency and user experience.Engineered Land Revenue Information System, streamlining administration processes and enhancing data accessibility for stakeholders.Architected Unified Ticketing and Knowledge System (UTIKS) for ICCR, reducing administrative overhead and improving user experience.Led the development of an E-Learning Portal, significantly increasing user participation through an engaging online platform.Refactored the Zoobiz platform, implementing geo-tagging and AI-matching features to boost user engagement.Implemented key financial management features, including automated billing and secure payment gateway integration for the Fincasys platform.Proficient in various PHP frameworks, including Laravel, CodeIgniter, and CakePHP, enabling rapid development and deployment of robust applications.Successfully standardized and modernized the SuperinnPlus product platform using PHP, focusing on continuous feature enhancement and proactive troubleshooting.
+
+TECHNICAL SKILLS
+1) PHP (Laravel)
+2) PHP (CodeIgniter)
+3) MySQL
+4) JavaScript
+5) HTML5
+6) CSS3
+7) Git
+8) Software Architecture
+9) Microservices
+10) CakePHP
+11) RESTFull API
+12) Payment Gateway Integration
+
+SOFT SKILLS
+1) Adaptability
+2) Communication
+3) Problem-solving
+4) Project Management
+
+CORE COMPETENCIES
+1) Full-Stack Development
+2) Database Management
+3) API Integration
+4) Software Design
+
+WORK EXPERIENCE
+Senior Software Developer
+Silver Touch Technologies Ltd.
+Jun 2021 - May 2022
+Responsibilities
+Led the development and maintenance of key software systems, ensuring high performance, scalability, and user satisfaction through strategic enhancements and proactive problem-solving. Accountable for system architecture, feature development, and ensuring seamless functionality aligning with organizational goals and user expectations.
+Work Done
+1) Spearheaded the engineering of the Land Revenue Information System, streamlining administrative processes and enhancing data accessibility for stakeholders, improving overall system efficiency.Architected the Unified Ticketing and Knowledge System (UTIKS) for ICCR, significantly reducing administrative overhead and enhancing user experience through a centralized platform.Developed a robust E-Learning Portal, which demonstrably increased user participation through a scalable and engaging online platform, enhancing learning outcomes.Managed and maintained both the National War Memorial project and the Indian Naval Placement Agency (INPA) system, facilitating career transitions for retired naval personnel and ensuring system reliability.
+Achievements
+1) Engineered Land Revenue Information System, markedly enhancing process efficiency and stakeholder data access.Architected UTIKS (Unified Ticketing and Knowledge System), demonstrably improving user satisfaction by streamlining processes.
+
+Senior Software Developer
+Silverwing Technologies Ltd.
+Oct 2019 - May 2021
+Responsibilities
+Managed the development, refactoring, and implementation of various web applications and financial features, ensuring seamless integration, high availability, and optimal performance. Accountable for overseeing project lifecycles, coordinating with multi-functional teams, and delivering solutions that meet business requirements.
+Work Done
+1) Refactored the Zoobiz platform, integrating geo-tagging and AI-matching to significantly enhance user engagement by providing more relevant matches.Oversaw development of the Chitra-B Publicity website and admin panel, ensuring high availability and implementing reliable REST API performance for seamless data exchange.Led bespoke development for Vishwanath Builders, creating a polished web presence and streamlining multi-site order management, improving overall operational efficiency.Implemented key financial management features for the Fincasys platform, which included automated billing processes and secure payment gateway integration, enhancing customer satisfaction and security.
+Achievements
+1) Implemented geo-tagging and AI matching for Zoobiz, which drove significant improvements in user engagement.Ensured high availability and robust REST API performance for the Chitra-B Publicity platformStreamlined multi-site order management for Vishwanath Builders enhancing client experience.
+
+PHP Developer
+IDream Technosoft Pvt. Ltd.
+Jun 2015 - Sep 2019
+Responsibilities
+Accountable for product platform maintenance and continuous improvement. Focused on leveraging PHP expertise for standardization and proactive problem resolution.
+Work Done
+1) Standardized and modernized the SuperinnPlus product platform utilizing PHP, focusing on continuous feature enhancements to meet user demands.Proactively enhanced overall user experience through troubleshooting and maintenance of core platform modules, ensuring stable and reliable performance.
+Achievements
+1) Modernized SuperinnPlus, improving its function and enhancing the user experience.
+
+EDUCATION
+M.Sc. in Computer Application & IT
+Gujarat University, K.S. School of Business Management
+2013 - 2015
+
+B.Sc. in Computer Application & IT
+Gujarat University, K.S. School of Business Management
+2010 - 2013
+
+PROJECTS
+InnsAble
+Project Responsibilities:-
+1) Developed a bespoke PMS (Property Management System) with a centralized calendar for real-time room management and streamlined booking workflows.Developed a profile-building system to manage complex guest metadata and stay histories, enhancing long-term loyalty programs.Automated financial controls with GST-compliant invoicing and integrated payment gateway support for various transaction modes.Streamlined back-of-house operations by adding specialized modules for housekeeping, waitlist management, and facility tracking.Provisioned high-security reporting tools and ensured cross-platform responsiveness for secure remote management.Link: https://www.idreamtechnosoft.com/innsable.php
+
+Fincasys
+Project Responsibilities:-
+1) Automated end-to-end financial workflows, including recurring billing cycles, real-time income/expense tracking, and the generation of comprehensive financial audits.Architected a multi-tier communication framework to bridge digital gaps between residents, administrative authorities, and onsite gatekeepers.Integrated secure, encrypted payment gateways to facilitate seamless online settlement of maintenance charges and utility fees.Optimized incident resolution by engineering a centralized complaint management system with granular tracking for residents and authorities.Engineered a secure gatekeeper application featuring a digital intercom system and automated visitor registration for enhanced community safety.Provisioned integrated community modules, including digital classifieds and event management tools, to drive resident engagement.Link: https://www.fincasys.com/
+
+Vishwanath Builders
+Project Responsibilities:-
+1) Vishwanath Builders: Administered website control panel and REST API for multiple builder sites.Efficiently Streamlined site-specific orders and product listings.Generated purchase orders based on diverse site requirements.Automated employee administration, including salaries, leave, and holidays.Configured mobile application menus and Deployed user roles (super admin, sales manager).Streamlined multi-site management to ensure consistent operations.Streamlined order management and product control processes across various platforms.Link: https://www.vishwanathbuilders.com/
+
+Zoobiz
+Project Responsibilities:-
+1) Implemented geo-tagging feature, enabling users to connect with local businesses.Integrated targeted search and AI matching for professional networking.Architected digital classifieds to facilitate business partnerships.Provided avenues for business promotion via timelines and banner ads.Included tools like scheduling, chat, and digital cards.link: https://zoobiz.app/
+
+Chitra-B Publicity @ www.silverwingtechnologies.com
+Project Responsibilities:-
+1) Administered website admin panel and REST API for efficient media organization.Generated tailored bookings to meet client-specific needs across various media areas.Disseminated booked media to clients via email in PPT, CSV, and PDF formats.Maintained diverse media areas to support client requests effectively.Link: https://chitra-b-publicity.com/
+
+Ministry of Ayush
+Project Responsibilities:-
+1) Full-Cycle Development: Spearheaded the end-to-end development of the Ministry of Ayush official portal, delivering a secure and scalable platform for traditional medicine (AYURVEDA, YOGA, UNANI, SIDDHA, HOMEOPATHY) initiatives.Centralized API Architecture: Engineered a unified API layer to aggregate data from various sub-portals (like NAMASTE and Ayush Research Portal), facilitating a seamless flow of information for millions of citizens.High-Performance Frontend: Developed a GIGW-compliant (Guidelines for Indian Government Websites) frontend, ensuring accessibility for differently-abled users and optimizing performance for low-bandwidth regions.Security &amp; Compliance: Implemented rigorous security protocols to protect public health datasets and research repositories, ensuring the platform successfully passed government security audits (STQC).Link: https://ayush.gov.in/
+
+Indian Council for Cultural Relations, Government of India
+Project Responsibilities:-
+1) End-to-End Development: Architected the frontend and backend for the official ICCR portal, serving as the digital face of India's cultural diplomacy for a global audience.Global API Integration: Developed and optimized RESTful APIs to support international student applications and scholarship tracking across 190+ countries.Compliance &amp; Performance: Ensured 100% adherence to GIGW (Guidelines for Indian Government Websites) and STQC security standards, implementing robust data encryption for sensitive foreign national records.UI/UX Optimization: Built a high-traffic responsive frontend that manages complex content, including multi-language support and real-time event updates for 37 global cultural centres.Link: https://iccr.gov.in/
+
+Gujarat Dyestuff Manufactures Assocciation
+Project Responsibilities:-
+1) End-to-End Development: Architected and deployed a comprehensive web portal and RESTful API suite to manage operations for an association of 1,500+ chemical and dyestuff manufacturing units.Frontend Excellence: Developed a responsive, user-centric dashboard using [Your Framework, e.g., React/Angular/Vue], enabling administrators to manage memberships, event registrations, and industry circulars.Backend &amp; API Architecture: Engineered a robust backend using PHP, designing secure APIs that facilitate real-time data synchronization between the web CMS and the "MyAssociation" mobile app.Feature Integration: Integrated automated payment gateways for membership renewals and a centralized notification system for broadcasting critical government and industry updates.Database Optimization: Optimized SQL schemas to handle complex relational data, ensuring sub-second query response times for the association's searchable member directory.Link: https://gdma.myassociation.app/
+
+LANGUAGES
+1) English
+2) Hindi
+3) Gujarati
+
+HOBBIES
+1) Software Design
+2) Problem Solving
+3) Web development
+4) API Development
+

@@ -1,0 +1,116 @@
+:host {
+  --teal-primary: #008080;
+  --teal-light: #e0f2f1;
+  --white: #ffffff;
+  --border-color: #d1d8d8;
+}
+
+.mgmt-container {
+  max-width: auto;
+  margin: 2rem auto;
+  padding: 0 20px;
+}
+
+.form-card {
+  
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.full-width { grid-column: span 2; }
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  label {
+    font-weight: 600;
+    color: var(--teal-primary);
+    font-size: 0.9rem;
+  }
+
+  input, textarea {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    transition: all 0.3s;
+    &:focus {
+      outline: none;
+      border-color: var(--teal-primary);
+      box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.1);
+    }
+  }
+}
+
+/* File Upload Previews */
+.preview-container {
+  margin-bottom: 15px;
+}
+
+.preview-card {
+  display: flex;
+  align-items: center;
+  background: #fdfdfd;
+  border: 1px solid #eee;
+  padding: 12px 20px;
+  border-radius: 8px;
+  gap: 15px;
+
+  &.photo-accent { border-left: 4px solid #26a69a; }
+  &.resume-accent { border-left: 4px solid var(--teal-primary); }
+
+  .thumb-img {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  .file-icon { font-size: 1.5rem; }
+
+  .text-group {
+    flex: 1;
+    label { font-size: 0.7rem; text-transform: uppercase; display: block; margin: 0; color: #888; }
+    .file-name { font-size: 0.85rem; color: #333; font-weight: 500; }
+  }
+}
+
+.view-btn {
+  padding: 6px 14px;
+  background: var(--white);
+  border: 1px solid var(--teal-primary);
+  color: var(--teal-primary);
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  &:hover {
+    background: var(--teal-primary);
+    color: white;
+  }
+}
+
+.btn-save {
+  width: 100%;
+  margin-top: 30px;
+  padding: 16px;
+  background: var(--teal-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  &:disabled { opacity: 0.6; cursor: not-allowed; }
+}
+
+.file-hint { color: #888; font-style: italic; margin-top: 4px; display: block; }

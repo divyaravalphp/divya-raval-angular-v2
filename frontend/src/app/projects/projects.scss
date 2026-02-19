@@ -1,0 +1,186 @@
+:host {
+  --teal-dark: #004d40;
+  --teal-primary: #008080;
+  --teal-accent: #4db6ac;
+  --teal-light: #e0f2f1;
+  --text-main: #333;
+  --text-muted: #666;
+}
+
+.projects-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #fcfdfd;
+}
+
+/* Header Section */
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.top-label {
+  color: var(--teal-primary);
+  font-weight: 800;
+  letter-spacing: 3px;
+  font-size: 0.8rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: #008080;
+  margin: 0;
+  font-weight: 700;
+}
+
+.header-line {
+  width: 60px;
+  height: 4px;
+  background-color: var(--teal-primary);
+  margin: 20px auto;
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Grid Layout */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+/* Project Card */
+.project-card {
+  background: white;
+  border: 1px solid #eef2f2;
+  border-radius: 8px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  border-top: 5px solid var(--teal-primary);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 128, 128, 0.1);
+}
+
+/* Card Content */
+.badge {
+  background: var(--teal-light);
+  color: #008080;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.project-card h3 {
+  margin: 15px 0;
+  font-size: 1.5rem;
+  color: #008080;
+}
+
+.desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px 0;
+}
+
+.feature-list li {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.check {
+  color: var(--teal-primary);
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+/* Footer Link */
+.card-footer {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid #f1f1f1;
+}
+
+.btn-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--teal-primary);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: gap 0.3s ease;
+}
+
+.btn-link:hover {
+  color: var(--teal-dark);
+  gap: 12px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .section-title { font-size: 2rem; }
+  .projects-grid { grid-template-columns: 1fr; }
+}
+
+.projects-container {
+  /* Formal teal border */
+  border: 2px solid #008080; 
+  border-radius: 12px;
+  
+  /* Subtle background to make the section pop */
+  background-color: rgba(0, 128, 128, 0.02); 
+  
+  /* Spacing and shadow for depth */
+  padding: 40px 20px;
+  margin-top: 20px ;
+  margin-bottom: 20px ;
+  box-shadow: 0 4px 20px rgba(0, 128, 128, 0.08);
+  
+  /* Transition for a smooth feel */
+  transition: transform 0.3s ease;
+}
+
+/* Optional: Slight lift effect when viewing the section */
+.projects-container:hover {
+  border-color: #006666; /* Slightly darker teal on focus */
+}
+
+.section-header .top-label {
+  color: #008080; /* Match label to the theme */
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.header-line {
+  background: #008080; /* Teal accent line */
+  height: 3px;
+  width: 60px;
+   
+}

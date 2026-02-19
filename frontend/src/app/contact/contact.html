@@ -1,0 +1,71 @@
+<section class="contact-container page-section bg-teal-light">
+  <div class="header-content">
+     
+    <h2 class="section-title">Contact Me</h2>
+    <div class="title-underline"></div>
+  </div>
+
+  <div class="contact-wrapper">
+    <div class="contact-info-panel">
+      <div class="info-content">
+        <span class="label">VISIT ME</span>
+        <h2>Our Location</h2>
+        <div class="address-details">
+          <p><strong>📍 Permanent Address:</strong></p>
+          <p>501, Radhe Nandan Appartments,<br>
+             Near Suvidha Hospital,<br>
+             Sanand - 382110, Ahmedabad,<br> 
+             Gujarat, India</p>
+        </div>
+        
+        <div class="map-wrapper">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.7064266010643!2d72.38208477588087!3d22.99782051725026!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e99e62bbb5a99%3A0x50520f9af6137ec0!2sRadhe%20Nandan!5e0!3m2!1sen!2sin!4v1771240415750!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form-panel">
+      <div class="contact-card">
+        @if (isSubmitted()) {
+          <div class="success-overlay">
+            <div class="success-content">
+              <span class="success-icon">✔️</span>
+              <h2>Thank You!</h2>
+              <p>Your message has been sent successfully.</p>
+              <button class="submit-btn" (click)="isSubmitted.set(false)">Send Another Message</button>
+            </div>
+          </div>
+        } @else {
+          <h2>Get in Touch</h2>
+          <p class="form-subtitle">Have a project in mind? Let's build something great together.</p>
+          
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+            <div class="input-group">
+              <label>Name</label>
+              <input type="text" formControlName="name" placeholder="Enter your full name">
+            </div>
+            
+            <div class="input-group">
+              <label>Email</label>
+              <input type="email" formControlName="email" placeholder="example@gmail.com">
+            </div>
+            
+            <div class="input-group">
+              <label>Phone</label>
+              <input type="tel" formControlName="phone" placeholder="+91 97255 28865">
+            </div>
+            
+            <div class="input-group">
+              <label>Message</label>
+              <textarea formControlName="message" rows="5" placeholder="Tell me about your project..."></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn" [disabled]="contactForm.invalid">
+              Send Message
+            </button>
+          </form>
+        }
+      </div>
+    </div>
+  </div>
+</section>

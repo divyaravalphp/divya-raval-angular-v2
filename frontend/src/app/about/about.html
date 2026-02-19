@@ -1,0 +1,66 @@
+
+<div class="about-container page-section bg-teal-light">
+  <header class="profile-header">
+    <div class="header-content">
+      <h1>Divya Raval</h1>
+      <p class="subtitle">Senior Software Developer | PHP & Full-Stack Expert</p>
+      <div class="social-links">
+        <a href="https://github.com/divyaravalphp" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/divya-raval-672594149/" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </header>
+
+ 
+    <section class="card summary">
+      <h2>Professional Summary</h2>
+      <p>
+        Results-driven Senior Software Developer with over 7 years of experience delivering high-impact digital solutions[cite: 4, 8]. 
+        Specializing in architecting scalable web applications and RESTful APIs using <strong>Laravel</strong> and <strong>CodeIgniter</strong>[cite: 5, 9].
+      </p>
+    </section>
+
+    <section class="card skills">
+      <h2>Technical Arsenal</h2>
+      <div class="skill-tags">
+        <span>PHP (Laravel/CodeIgniter)</span>
+        <span>MySQL</span>
+        <span>JavaScript</span>
+        <span>RESTful APIs</span>
+        <span>AWS (S3/SQS)</span>
+        <span>Software Architecture</span>
+      </div>
+    </section>
+
+    <section class="card projects">
+      <h2>Featured Impact</h2>
+      <ul>
+        <li><strong>Ministry of Ayush:</strong> Spearheaded end-to-end development of the official portal and unified API layer[cite: 97, 98].</li>
+        <li><strong>ICCR Portal:</strong> Architected the digital face of India's cultural diplomacy for a global audience[cite: 103].</li>
+        <li><strong>Zoobiz:</strong> Implemented AI-matching and geo-tagging to boost user engagement[cite: 13, 39].</li>
+      </ul>
+    </section>
+
+    <section class="card education">
+      <h2>Education</h2>
+      <p><strong>M.Sc. in Computer Application & IT</strong></p>
+      <p>Gujarat University, K.S. School of Business Management (2015) [cite: 55, 57]</p>
+    </section>
+    
+    <section class="card citations-section">
+  <div class="citation-header">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    <h2>Data Sources & Verification</h2>
+  </div>
+  
+  <div class="citation-grid">
+    @for (cite of citations(); track cite.id) {
+      <div class="citation-item">
+        <span class="cite-number">[{{ cite.id }}]</span>
+        <span class="cite-text">{{ cite.text }}</span>
+      </div>
+    }
+  </div>
+</section>
+
+</div>

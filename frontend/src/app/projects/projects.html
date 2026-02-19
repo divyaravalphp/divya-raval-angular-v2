@@ -1,0 +1,39 @@
+<section class="projects-container">
+  <header class="section-header">
+    <span class="top-label">PORTFOLIO</span>
+    <h2 class="section-title">Professional Projects</h2>
+    <div class="header-line"></div>
+    <p class="section-subtitle">
+      A curated collection of enterprise <strong>SaaS solutions</strong>, 
+      high-security <strong>Government platforms</strong>, and scalable web architectures.
+    </p>
+  </header>
+
+  <div class="projects-grid">
+   <article *ngFor="let project of projects()" class="project-card">
+      <div class="card-header">
+        <span class="badge">{{ project.category }}</span>
+        <h3>{{ project.title }}</h3>
+      </div>
+      
+      <div class="card-body">
+        <p class="desc">{{ project.description }}</p>
+        <ul class="feature-list">
+          <li *ngFor="let feature of project.features">
+            <span class="check">✓</span> {{ feature }}
+          </li>
+        </ul>
+      </div>
+
+      <div class="card-footer">
+        <a [href]="project.link" target="_blank" class="btn-link">
+          Explore Project 
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </a>
+      </div>
+    </article>
+  </div>
+</section>

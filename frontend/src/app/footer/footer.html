@@ -1,0 +1,52 @@
+<footer class="main-footer">
+  <div class="container" *ngIf="profileData() as profile">
+    <div class="footer-grid">
+      <div class="footer-section brand-box">
+        <h3 class="footer-logo">{{ profile.full_name }}- {{ profile.current_title }}</h3>
+        <p class="brand-desc">
+          {{ profile.summary }}
+        </p>
+      </div>
+
+      <div class="footer-section">
+        <h4 class="section-title">CONTACT INFO</h4>
+        <ul class="contact-list">
+          <li>
+            <span class="icon">📧</span>
+            <a href="mailto:ravaldivyaks@gmail.com">{{ profile.email }}</a>
+          </li>
+          <li>
+            <span class="icon">📞</span>
+            <a href="tel:+919725528865">{{ profile.phone }}</a>
+          </li>
+          <li class="address-item">
+            <span class="icon">📍</span>
+            <address>
+              {{ profile.address_line_1 }}<br>
+              <span *ngIf="profile.address_line_2">{{ profile.address_line_2 }}, </span>
+              {{ profile.city }} - {{ profile.zip_code }},<br>
+              {{ profile.state }}, India
+            </address>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4 class="section-title">CONNECT</h4>
+        <div class="social-links">
+          <a *ngFor="let link of socialLinks()" 
+             [href]="link.url" 
+             target="_blank" 
+             class="social-btn">
+             <i *ngIf="link.icon_class" [class]="link.icon_class"></i>
+             {{ link.platform_name }}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2024–{{ currentYear() }} Divya Raval. All Rights Reserved. Built with Angular 21.</p>
+    </div>
+  </div>
+</footer>
