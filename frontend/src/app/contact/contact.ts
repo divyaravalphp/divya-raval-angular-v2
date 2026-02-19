@@ -2,7 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common'; // Added for @if
-
+import { ApiService } from '../services/api';
 @Component({
   selector: 'app-contact',
   standalone: true,
@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common'; // Added for @if
 export class Contact {
   private fb = inject(FormBuilder);
   private http = inject(HttpClient);
+  private apiService = inject(ApiService);
   
   contactForm: FormGroup;
   // Signal to track if the email was sent successfully
@@ -29,8 +30,7 @@ export class Contact {
 
   onSubmit() {
     if (this.contactForm.valid) {
-      this.http.post('http://localhost:3000/api/contact', this.contactForm.value)
-        .subscribe({
+      this.apiService.sendContactMessage(this.contactForm.value).subscribe({
           next: (res) => {
             this.isSubmitted.set(true); // Show success message
             this.contactForm.reset();    // Clear form fields

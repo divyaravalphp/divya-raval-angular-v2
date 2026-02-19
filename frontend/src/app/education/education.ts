@@ -2,6 +2,7 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
+import { ApiService } from '../services/api';
 interface EducationItem {
   id?: number;
   degree: string;
@@ -19,6 +20,7 @@ interface EducationItem {
 })
 export class Education implements OnInit {
   private http = inject(HttpClient);
+  private apiService = inject(ApiService);
   
   // Use a signal for the dynamic list
   educationList = signal<EducationItem[]>([]);
@@ -29,7 +31,7 @@ export class Education implements OnInit {
 
   fetchEducation() {
     // API endpoint for your education table
-    this.http.get<EducationItem[]>('http://localhost:3000/api/education').subscribe({
+     this.apiService.getEducation().subscribe({
       next: (data) => {
         this.educationList.set(data);
       },

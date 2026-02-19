@@ -1,6 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { ApiService } from '../services/api';
 @Component({
   selector: 'app-home',
   imports: [CommonModule],
@@ -9,7 +10,7 @@ import { CommonModule } from '@angular/common';
 })
 export class Home implements OnInit {
   private http = inject(HttpClient);
-  
+  private apiService = inject(ApiService);
   // Use a signal or a simple object to hold profile data
   profileData = signal<any>(null);
 
@@ -18,7 +19,7 @@ export class Home implements OnInit {
   }
 
   fetchProfile() {
-    this.http.get<any>('http://localhost:3000/api/profile').subscribe({
+    this.apiService.getProfile().subscribe({
       next: (data) => {
         this.profileData.set(data);
       },

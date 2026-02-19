@@ -2,6 +2,8 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgClass, NgFor } from '@angular/common'; // Fixed import
 
+import { ApiService } from '../services/api';
+
 interface Project {
   id?: number;
   title: string;
@@ -21,6 +23,7 @@ interface Project {
 })
 export class Projects implements OnInit {
   private http = inject(HttpClient);
+  private apiService = inject(ApiService);
   projects = signal<Project[]>([]);
 
   ngOnInit() {
@@ -28,7 +31,7 @@ export class Projects implements OnInit {
   }
 
   fetchProjects() {
-  this.http.get<any[]>('http://localhost:3000/api/projects').subscribe({
+   this.apiService.getProjects().subscribe({
     next: (data) => {
       const formattedData: Project[] = data.map((project: any) => {
         let featureArray: string[] = [];

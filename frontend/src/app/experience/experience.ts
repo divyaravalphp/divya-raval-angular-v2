@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common'; 
-
+import { ApiService } from '../services/api';
 interface WorkExperience {
   id?: number;
   period: string;
@@ -22,6 +22,7 @@ interface WorkExperience {
 })
 export class Experience implements OnInit {
   private http = inject(HttpClient);
+  private apiService = inject(ApiService);
   
   // Use a signal for reactive data binding
   workHistory = signal<WorkExperience[]>([]);
@@ -32,7 +33,7 @@ export class Experience implements OnInit {
 
   fetchExperience() {
     // API endpoint pointing to your professional_experiences table
-    this.http.get<any[]>('http://localhost:3000/api/experiences').subscribe({
+    this.apiService.getExperience().subscribe({
       next: (data) => {
         const formattedData: WorkExperience[] = data.map(job => ({
           ...job,
