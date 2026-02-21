@@ -16,6 +16,14 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
+app.get('/', (req, res) => {
+    res.send('Portfolio Backend API is running...');
+});
+
+const { Pool } = require('pg');
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+});
 
 // 1. CORS & Middleware Configuration
 app.use(cors({
