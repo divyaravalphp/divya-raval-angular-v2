@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:3000/' 
+  apiUrl: 'https://divya-raval-angular-v2.onrender.com' 
 };
