@@ -25,9 +25,29 @@ pool.query('SELECT NOW()', (err, res) => {
     }
 });
 
-// 2. CORS & Middleware Configuration
+const allowedOrigins = [
+  'http://localhost:4200', // For local testing
+  'https://divya-raval-angular-v2.vercel.app', // Your main production URL
+  /\.vercel\.app$/ // This ALLOWS any URL ending in .vercel.app (covers previews)
+];
+
+
 app.use(cors({
-    origin: ['https://divya-raval-angular-v2-j9ykdbm5w-ravaldivyaks-3937s-projects.vercel.app', 'http://localhost:4200'],
+    origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true);
+    
+    const isAllowed = allowedOrigins.some(allowed => {
+      if (allowed instanceof RegExp) return allowed.test(origin);
+      return allowed === origin;
+    });
+
+    if (isAllowed) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
