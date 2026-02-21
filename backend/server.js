@@ -144,10 +144,17 @@ app.put('/api/profile/:id', upload.fields([{ name: 'resume', maxCount: 1 }, { na
 // Projects
 app.get('/api/projects', async (req, res) => {
     try {
+        console.log("Attempting to fetch projects from DB...");
         const result = await pool.query("SELECT * FROM projects");
+        console.log(`Successfully fetched ${result.rows.length} projects.`);
         res.status(200).json(result.rows);
     } catch (error) {
-        res.status(500).json({ error: "Failed to fetch projects" });
+        console.error("❌ DATABASE QUERY ERROR:", error.message);
+        console.error("Error Code:", error.code);
+        res.status(500).json({ 
+            error: "Failed to fetch projects", 
+            details: error.message 
+        });
     }
 });
 
