@@ -68,6 +68,16 @@ const db = mysql.createPool({
     port: Number(process.env.DB_PORT) || 3306,
 });
 
+
+db.getConnection()
+    .then(connection => {
+        console.log("✅ Successfully connected to the MySQL database!");
+        connection.release();
+    })
+    .catch(err => {
+        console.error("❌ Database connection failed:", err.message);
+    });
+
 const JWT_SECRET = process.env.JWT_SECRET;
 // 3. Auth Middleware
 const verifyToken = (req, res, next) => {
