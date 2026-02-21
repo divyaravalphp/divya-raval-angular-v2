@@ -137,7 +137,7 @@ app.get('/api/profile', async (req, res) => {
     }
 });
 
-app.get('/api/education', verifyToken, async (req, res) => {
+app.get('/api/education',  async (req, res) => {
     try {
         const [rows] = await pool.query("SELECT * FROM education ORDER BY id ASC");
         res.status(200).json(rows);
@@ -146,7 +146,7 @@ app.get('/api/education', verifyToken, async (req, res) => {
     }
 }); 
 
-app.get('/api/experiences', verifyToken, async (req, res) => {
+app.get('/api/experiences',  async (req, res) => {
     try {
         const [rows] = await pool.query("SELECT * FROM professional_experiences ORDER BY period_start DESC");
         res.status(200).json(rows);
@@ -156,7 +156,7 @@ app.get('/api/experiences', verifyToken, async (req, res) => {
 }); 
 
 
-app.post('/api/experiences', verifyToken, async (req, res) => {
+app.post('/api/experiences',  async (req, res) => {
     const { role, company, period_start, period_end, location, description, projects, achievements } = req.body;
     
     try {
@@ -194,7 +194,7 @@ app.post('/api/experiences', verifyToken, async (req, res) => {
     }
 });
  
-app.put('/api/experiences/:id', verifyToken, async (req, res) => {
+app.put('/api/experiences/:id',  async (req, res) => {
     const { id } = req.params;
     const { role, company, period_start, period_end, location, description, projects, achievements } = req.body;
 
