@@ -17,7 +17,7 @@ interface Project {
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [NgClass, NgFor], // Ensure these are listed here
+  imports: [ NgFor], // Ensure these are listed here
   templateUrl: './projects.html',
   styleUrl: './projects.scss',
 })
