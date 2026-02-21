@@ -11,7 +11,7 @@
         <div class="cta-group">
          
          <a *ngIf="profile.resume"
-            [href]="'http://localhost:3000/public/resumes/' + profile.resume" 
+            [href]="'https://divya-raval-angular-v2.onrender.com/public/resumes/' + profile.resume" 
             [download]="profile.resume" 
             class="btn-outline">
             Download CV
@@ -21,7 +21,7 @@
 
       <div class="hero-image-area">
         <div class="image-stack">
-          <img *ngIf="profile.photo" [src]="'http://localhost:3000/public/resumes/' + profile.photo"  alt="Divya Raval" class="main-profile-img">
+          <img *ngIf="profile.photo" [src]="'https://divya-raval-angular-v2.onrender.com/public/resumes/' + profile.photo"  alt="Divya Raval" class="main-profile-img">
           <div class="floating-card experience">
             <span class="stat-num">{{ profile.experience_years }}+</span>
             <span class="stat-desc">Years Exp.</span>
