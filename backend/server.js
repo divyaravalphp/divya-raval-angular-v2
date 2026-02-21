@@ -193,13 +193,7 @@ app.post('/api/experiences', verifyToken, async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
-
-To convert your Experiences PUT route to match the PostgreSQL pattern you used for the Profile route, we need to switch to $1, $2... numbered placeholders and handle the result using result.rows[0].
-
-Since this specific route doesn't involve file uploads like your profile example, the logic is more straightforward, but I've kept the structured RETURNING * approach for consistency.
-
-Updated Node.js Route (PostgreSQL Style)
-JavaScript
+ 
 app.put('/api/experiences/:id', verifyToken, async (req, res) => {
     const { id } = req.params;
     const { role, company, period_start, period_end, location, description, projects, achievements } = req.body;
