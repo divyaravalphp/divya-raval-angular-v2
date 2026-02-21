@@ -137,6 +137,120 @@ app.get('/api/profile', async (req, res) => {
     }
 });
 
+app.get('/api/education', verifyToken, async (req, res) => {
+    try {
+        const [rows] = await pool.query("SELECT * FROM education ORDER BY id ASC");
+        res.status(200).json(rows);
+    } catch (error) {
+        res.status(500).json({ error: "Failed to fetch Education" });
+    }
+}); 
+
+app.get('/api/experiences', verifyToken, async (req, res) => {
+    try {
+        const [rows] = await pool.query("SELECT * FROM professional_experiences ORDER BY period_start DESC");
+        res.status(200).json(rows);
+    } catch (error) {
+        res.status(500).json({ error: "Failed to fetch Experiences" });
+    }
+}); 
+
+
+app.post('/api/experiences', verifyToken, async (req, res) => {
+    const { role, company, period_start, period_end, location, description, projects, achievements } = req.body;
+    
+    try {
+        // 1. Use PostgreSQL $n placeholders
+        // 2. Add RETURNING id to get the new ID back
+        const sql = `
+            INSERT INTO professional_experiences 
+            (role, company, period_start, period_end, location, description, projects, achievements) 
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8) 
+            RETURNING id`;
+        
+        const values = [
+            role, 
+            company, 
+            period_start, 
+            period_end || null, 
+            location || 'Remote', 
+            description, 
+            // Ensure these are stringified for JSON/JSONB columns
+            JSON.stringify(projects), 
+            JSON.stringify(achievements)
+        ];
+
+        // Use pool.query (or your pg client)
+        const result = await pool.query(sql, values);
+        
+        // PostgreSQL returns rows in the 'rows' array
+        res.status(201).json({ 
+            id: result.rows[0].id, 
+            ...req.body 
+        });
+    } catch (error) {
+        console.error("POST Experiences Error:", error.message);
+        res.status(500).json({ error: error.message });
+    }
+});
+
+To convert your Experiences PUT route to match the PostgreSQL pattern you used for the Profile route, we need to switch to $1, $2... numbered placeholders and handle the result using result.rows[0].
+
+Since this specific route doesn't involve file uploads like your profile example, the logic is more straightforward, but I've kept the structured RETURNING * approach for consistency.
+
+Updated Node.js Route (PostgreSQL Style)
+JavaScript
+app.put('/api/experiences/:id', verifyToken, async (req, res) => {
+    const { id } = req.params;
+    const { role, company, period_start, period_end, location, description, projects, achievements } = req.body;
+
+    try {
+        // 1. Use PostgreSQL $n placeholders instead of ?
+        // 2. Use RETURNING * to get the updated record back (standard Postgres practice)
+        const sql = `
+            UPDATE professional_experiences 
+            SET 
+                role=$1, 
+                company=$2, 
+                period_start=$3, 
+                period_end=$4, 
+                location=$5, 
+                description=$6, 
+                projects=$7, 
+                achievements=$8 
+            WHERE id=$9 
+            RETURNING *`;
+        
+        const values = [
+            role, 
+            company, 
+            period_start, 
+            period_end || null, 
+            location || 'Remote', 
+            description, 
+            // Ensure arrays are stringified for JSON/JSONB columns
+            JSON.stringify(projects), 
+            JSON.stringify(achievements),
+            id
+        ];
+
+        // Use pool.query (PostgreSQL client)
+        const result = await pool.query(sql, values);
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ error: "Experience not found" });
+        }
+
+        res.json({ 
+            message: 'Experience updated successfully', 
+            data: result.rows[0] 
+        });
+    } catch (error) {
+        console.error("PUT Experiences Error:", error.message);
+        res.status(500).json({ error: error.message });
+    }
+});
+
 app.put('/api/profile/:id', upload.fields([{ name: 'resume', maxCount: 1 }, { name: 'photo', maxCount: 1 }]), async (req, res) => {
     const { id } = req.params;
     const { full_name, current_title, summary, email, phone, address_line_1, address_line_2, city, state, zip_code, experience_years } = req.body;
