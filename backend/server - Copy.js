@@ -126,7 +126,7 @@ const transporter = nodemailer.createTransport({
 app.get('/api/admin/messagesnotreplied', async (req, res) => {
     try {
         // With promise clients, query returns [rows, fields]
-        const [rows] = await pool.query("SELECT * FROM messages where reply_text is NULL ORDER BY submitted_at DESC");
+        const [rows] = await db.query("SELECT * FROM messages where reply_text is NULL ORDER BY submitted_at DESC");
         res.json(rows);
     } catch (err) {
         console.error("Database Error:", err);
@@ -137,7 +137,7 @@ app.get('/api/admin/messagesnotreplied', async (req, res) => {
 app.get('/api/admin/messages', async (req, res) => {
     try {
         // With promise clients, query returns [rows, fields]
-        const [rows] =await pool.query("SELECT * FROM messages ORDER BY submitted_at DESC");
+        const [rows] = await db.query("SELECT * FROM messages ORDER BY submitted_at DESC");
         res.json(rows);
     } catch (err) {
         console.error("Database Error:", err);
@@ -152,7 +152,7 @@ app.post('/api/admin/reply', async (req, res) => {
     try {
         // Save reply to database
         const sql = "UPDATE messages SET reply_text = ?, replied_at = NOW() WHERE id = ?";
-        await pool.query(sql, [replyText, id]);
+        await db.query(sql, [replyText, id]);
 
         // Send Email via Nodemailer
         const mailOptions = {
@@ -351,7 +351,7 @@ app.post('/api/auth/login', async (req, res) => {
  
 app.get('/api/projects', verifyToken, async (req, res) => {
     try {
-        const [rows] = await pool.query("SELECT * FROM projects");
+        const [rows] = await db.query("SELECT * FROM projects");
         res.status(200).json(rows);
     } catch (error) {
         res.status(500).json({ error: "Failed to fetch projects" });
@@ -364,7 +364,7 @@ app.post('/api/projects', verifyToken, async (req, res) => {
         const sql = `INSERT INTO projects (title, company, category, type_class, description, features, link, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
         const values = [title, company, category, type_class, description, JSON.stringify(features), link, status];
         
-        const [result] = await pool.query(sql, values);
+        const [result] = await db.query(sql, values);
         res.status(201).json({ id: result.insertId, ...req.body });
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -377,7 +377,7 @@ app.put('/api/projects/:id', verifyToken, async (req, res) => {
         const sql = `UPDATE projects SET title=?, company=?, category=?, type_class=?, description=?, features=?, link=?, status=? WHERE id=?`;
         const values = [title, company, category, type_class, description, JSON.stringify(features), link, status, req.params.id];
 
-        await pool.query(sql, values);
+        await db.query(sql, values);
         res.json({ message: 'Project updated successfully' });
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -386,7 +386,7 @@ app.put('/api/projects/:id', verifyToken, async (req, res) => {
 
 app.delete('/api/projects/:id', verifyToken, async (req, res) => {
     try {
-        await pool.query('DELETE FROM projects WHERE id = ?', [req.params.id]);
+        await db.query('DELETE FROM projects WHERE id = ?', [req.params.id]);
         res.json({ message: 'Project deleted' });
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -395,7 +395,7 @@ app.delete('/api/projects/:id', verifyToken, async (req, res) => {
 
 app.get('/api/education', verifyToken, async (req, res) => {
     try {
-        const [rows] = await pool.query("SELECT * FROM education ORDER BY id ASC");
+        const [rows] = await db.query("SELECT * FROM education ORDER BY id ASC");
         res.status(200).json(rows);
     } catch (error) {
         res.status(500).json({ error: "Failed to fetch Education" });
@@ -404,7 +404,7 @@ app.get('/api/education', verifyToken, async (req, res) => {
 
 app.get('/api/experiences', verifyToken, async (req, res) => {
     try {
-        const [rows] = await pool.query("SELECT * FROM professional_experiences ORDER BY period_start DESC");
+        const [rows] = await db.query("SELECT * FROM professional_experiences ORDER BY period_start DESC");
         res.status(200).json(rows);
     } catch (error) {
         res.status(500).json({ error: "Failed to fetch Experiences" });
@@ -430,7 +430,7 @@ app.post('/api/experiences', verifyToken, async (req, res) => {
             JSON.stringify(achievements)
         ];
 
-        const [result] = await pool.query(sql, values);
+        const [result] = await db.query(sql, values);
         res.status(201).json({ id: result.insertId, ...req.body });
     } catch (error) {
         console.error("POST Error:", error.message);
@@ -459,7 +459,7 @@ app.put('/api/experiences/:id', verifyToken, async (req, res) => {
             id
         ];
 
-        await pool.query(sql, values);
+        await db.query(sql, values);
         res.json({ message: 'Experience updated successfully' });
     } catch (error) {
         console.error("PUT Error:", error.message);
@@ -471,7 +471,7 @@ app.delete('/api/experiences/:id', verifyToken, async (req, res) => {
     const { id } = req.params;
     try {
         const sql = "DELETE FROM professional_experiences WHERE id = ?";
-        const [result] = await pool.query(sql, [id]);
+        const [result] = await db.query(sql, [id]);
 
         if (result.affectedRows > 0) {
             res.json({ message: 'Experience deleted successfully' });
@@ -487,7 +487,7 @@ app.delete('/api/experiences/:id', verifyToken, async (req, res) => {
 app.get('/api/social-links', async (req, res) => {
     try {
         const sql = "SELECT * FROM social_links ORDER BY platform_name ASC";
-        const [results] = await pool.query(sql); // Array destructuring for promises
+        const [results] = await db.query(sql); // Array destructuring for promises
         res.json(results);
     } catch (err) {
         console.error("❌ SQL Error:", err.message);
@@ -498,7 +498,7 @@ app.post('/api/social-links', verifyToken, async (req, res) => {
     const { profile_id, platform_name, url, icon_class } = req.body;
     try {
         const sql = "INSERT INTO social_links (profile_id, platform_name, url, icon_class) VALUES (?, ?, ?, ?)";
-        const [result] = await pool.query(sql, [profile_id || 1, platform_name, url, icon_class]);
+        const [result] = await db.query(sql, [profile_id || 1, platform_name, url, icon_class]);
         res.status(201).json({ message: "Link added successfully", id: result.insertId });
     } catch (err) {
         res.status(500).json({ error: err.message });
@@ -509,7 +509,7 @@ app.put('/api/social-links/:id', verifyToken, async (req, res) => {
     const { platform_name, url, icon_class } = req.body;
     try {
         const sql = "UPDATE social_links SET platform_name = ?, url = ?, icon_class = ? WHERE id = ?";
-        await pool.query(sql, [platform_name, url, icon_class, id]);
+        await db.query(sql, [platform_name, url, icon_class, id]);
         res.json({ message: "Link updated successfully" });
     } catch (err) {
         res.status(500).json({ error: err.message });
@@ -519,7 +519,7 @@ app.delete('/api/social-links/:id', verifyToken, async (req, res) => {
     const { id } = req.params;
     try {
         const sql = "DELETE FROM social_links WHERE id = ?";
-        await pool.query(sql, [id]);
+        await db.query(sql, [id]);
         res.json({ message: "Link deleted successfully" });
     } catch (err) {
         res.status(500).json({ error: err.message });
