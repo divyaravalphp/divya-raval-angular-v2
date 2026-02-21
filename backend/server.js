@@ -163,15 +163,31 @@ app.get('/api/education', async (req, res) => {
 });
 
 
-app.get('/api/experiences',  async (req, res) => {
-    try {
-        const [rows] = await pool.query("SELECT * FROM professional_experiences ORDER BY period_start DESC");
-        res.status(200).json(rows);
-    } catch (error) {
-        res.status(500).json({ error: "Failed to fetch Experiences" });
-    }
-}); 
+// app.get('/api/experiences',  async (req, res) => {
+//     try {
+//         const [rows] = await pool.query("SELECT * FROM professional_experiences ORDER BY period_start DESC");
+//         res.status(200).json(rows);
+//     } catch (error) {
+//         res.status(500).json({ error: "Failed to fetch Experiences" });
+//     }
+// }); 
 
+
+app.get('/api/experiences', async (req, res) => {
+    try {
+       
+        const result = await pool.query("SELECT * FROM  professional_experiences ORDER BY  period_start DESC");
+        console.log(`Successfully fetched ${result.rows.length} Experiences.`);
+        res.status(200).json(result.rows);
+    } catch (error) {
+        console.error("❌ DATABASE QUERY ERROR:", error.message);
+        console.error("Error Code:", error.code);
+        res.status(500).json({ 
+            error: "Failed to fetch Experiences", 
+            details: error.message 
+        });
+    }
+});
 
 app.post('/api/experiences',  async (req, res) => {
     const { role, company, period_start, period_end, location, description, projects, achievements } = req.body;
