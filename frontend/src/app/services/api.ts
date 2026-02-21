@@ -11,7 +11,9 @@ export class ApiService {
 
   // Define your common base URL here
   
-  public readonly baseUrl = 'http://localhost:3000/api';
+ // public readonly baseUrl = 'http://localhost:3000/api';
+  public readonly baseUrl = environment.apiUrl;
+  
   getProfile(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/profile`);
   }
