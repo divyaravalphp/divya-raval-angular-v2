@@ -137,14 +137,31 @@ app.get('/api/profile', async (req, res) => {
     }
 });
 
-app.get('/api/education',  async (req, res) => {
+// app.get('/api/education',  async (req, res) => {
+//     try {
+//         const [rows] = await pool.query("SELECT * FROM education ORDER BY id ASC");
+//         res.status(200).json(rows);
+//     } catch (error) {
+//         res.status(500).json({ error: "Failed to fetch Education" });
+//     }
+// }); 
+
+app.get('/api/education', async (req, res) => {
     try {
-        const [rows] = await pool.query("SELECT * FROM education ORDER BY id ASC");
-        res.status(200).json(rows);
+        console.log("Attempting to fetch projects from DB...");
+        const result = await pool.query("SELECT * FROM  education ORDER BY id ASC");
+        console.log(`Successfully fetched ${result.rows.length} education.`);
+        res.status(200).json(result.rows);
     } catch (error) {
-        res.status(500).json({ error: "Failed to fetch Education" });
+        console.error("❌ DATABASE QUERY ERROR:", error.message);
+        console.error("Error Code:", error.code);
+        res.status(500).json({ 
+            error: "Failed to fetch Education", 
+            details: error.message 
+        });
     }
-}); 
+});
+
 
 app.get('/api/experiences',  async (req, res) => {
     try {
