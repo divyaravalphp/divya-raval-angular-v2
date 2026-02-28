@@ -331,7 +331,9 @@ app.post('/api/projects', verifyToken, async (req, res) => {
 });
 
 // Messages
-app.post('/api/contact', async (req, res) => {
+//app.post('/api/contact', async (req, res) => {
+
+    app.post(['/api/contact', '/contact'], async (req, res) => {
     const { name, email, phone, message } = req.body;
     try {
         await pool.query("INSERT INTO messages (name, email, phone, message) VALUES ($1, $2, $3, $4)", [name, email, phone, message]);
