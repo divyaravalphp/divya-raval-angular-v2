@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://divya-raval-angular-v2.onrender.com/api' 
+  apiUrl: 'https://divya-raval.vercel.app/api' 
 };
