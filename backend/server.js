@@ -335,13 +335,13 @@ app.post('/api/contact', async (req, res) => {
     const { name, email, phone, message } = req.body;
     try {
         await pool.query("INSERT INTO messages (name, email, phone, message) VALUES ($1, $2, $3, $4)", [name, email, phone, message]);
-        const mailOptions = {
-            from: process.env.EMAIL_USER,
-            to: process.env.EMAIL_TO,
-            subject: `New Contact from ${name}`,
-            text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
-        };
-        await transporter.sendMail(mailOptions);
+        // const mailOptions = {
+        //     from: process.env.EMAIL_USER,
+        //     to: process.env.EMAIL_TO,
+        //     subject: `New Contact from ${name}`,
+        //     text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
+        // };
+        // await transporter.sendMail(mailOptions);
         res.status(200).json({ message: "Data saved and Email sent!" });
     } catch (error) {
         res.status(500).json({ error: error.message });
