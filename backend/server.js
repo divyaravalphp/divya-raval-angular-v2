@@ -344,6 +344,17 @@ app.post('/api/projects', verifyToken, async (req, res) => {
         //     text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
         // };
         // await transporter.sendMail(mailOptions);
+
+
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: process.env.EMAIL_TO,
+            subject: `New Contact from ${name}`,
+            text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
+        };
+
+        await transporter.sendMail(mailOptions);
+        
         res.status(200).json({ message: "Data saved and Email sent!" });
     } catch (error) {
         res.status(500).json({ error: error.message });
