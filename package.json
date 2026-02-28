@@ -1,13 +1,15 @@
 {
-  "name": "divya-raval-angular",
+  "name": "divya-raval-root",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "Root configuration for Vercel",
+  "main": "backend/server.js",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "nodemailer": "^8.0.1",
+    "pg": "^8.18.0",
+    "body-parser": "^2.2.2"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "type": "commonjs"
 }
