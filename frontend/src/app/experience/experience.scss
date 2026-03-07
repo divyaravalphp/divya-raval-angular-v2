@@ -7,7 +7,7 @@
 }
 
 .experience-container {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 80px 20px;
   font-family: 'Segoe UI', Roboto, sans-serif;
@@ -29,7 +29,7 @@
 
 .title {
   font-size: 2.4rem;
-  color: #008080;
+  color: var(--teal-dark);
   margin: 10px 0;
 }
 
@@ -52,7 +52,7 @@
   top: 0;
   bottom: 0;
   width: 3px;
-  // background: linear-gradient(to bottom, var(--teal-primary), var(--teal-light));
+  background: linear-gradient(to bottom, var(--teal-primary), var(--teal-light));
 }
 
 .job-card {
@@ -97,7 +97,7 @@
 
 .role {
   font-size: 1.4rem;
-  color: #008080;
+  color: var(--teal-dark);
   margin: 0;
 }
 
@@ -108,7 +108,7 @@
 }
 
 .badge-teal {
-  background: #008080;
+  background: var(--teal-dark);
   color: white;
   padding: 5px 15px;
   border-radius: 20px;
@@ -176,13 +176,4 @@
   .extra-details { grid-template-columns: 1fr; }
   .job-header { flex-direction: column; }
   .meta-group { text-align: left; }
-}
-
-.experience-container {
-  /* Adjust the hex code or use a variable if you have one */
-  border: 2px solid #b2dfdb; 
-  border-radius: 12px;       /* Optional: rounds the corners for a modern look */
-  padding: 20px;             /* Ensures content doesn't touch the new border */ 
-  margin-top: 20px;
-  margin-bottom: 20px;
 }

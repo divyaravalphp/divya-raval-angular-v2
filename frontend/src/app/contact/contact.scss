@@ -1,115 +1,141 @@
-$teal-primary: #008080;
-$teal-accent: #4db6ac;
-$teal-border: #b2dfdb;
-$teal-light-bg: #f0fcfc;
+:host {
+  --teal-dark: #008080;
+  --teal-primary: #008080;
+  --teal-accent: #4db6ac;
+  --teal-light: #e0f2f1;
+}
 
 .contact-container {
   max-width: 1200px;
-  border: 2px solid $teal-border; // Light teal border to match other sections
-  border-radius: 20px;
-  padding: 4rem 2rem;
-  margin: 2rem auto;
-  background-color: #fff;
-
-  .header-content {
-    text-align: center;
-    margin-bottom: 3rem;
-
-    .top-label {
-      color: $teal-primary;
-      font-weight: 700;
-      letter-spacing: 2px;
-    }
-
-    .section-title {
-      font-size: 2.5rem;
-      color: $teal-primary;
-    }
-
-    .title-underline {
-      width: 60px;
-      height: 4px;
-      background: $teal-accent;
-      margin: 10px auto;
-      border-radius: 2px;
-    }
-  }
+  margin: 60px auto;
+  padding: 0 20px;
+  font-family: 'Segoe UI', Roboto, sans-serif;
 }
 
 .contact-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  
-  @media (max-width: 992px) {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Map Teal Background Effect */
-.map-wrapper {
-  overflow: hidden;
-  border-radius: 12px;
-  border: 1px solid $teal-border;
-  height: 100%;
-  min-height: 350px;
-
-  iframe {
-    
-    /* This filter makes the standard Google Map look Teal/Cyan */
-    filter: hue-rotate(140deg) brightness(0.9) saturate(0.8) contrast(1.1);
-  }
-}
-
-.contact-card {
+  display: flex;
   background: white;
-  padding: 2.5rem;
   border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 128, 128, 0.1);
-
-  h2 { color: $teal-primary; }
-  
-  .input-group {
-    margin-bottom: 1.5rem;
-    
-    label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-      color: #444;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 0.8rem;
-      border: 1px solid $teal-border;
-      border-radius: 8px;
-      &:focus {
-        outline: none;
-        border-color: $teal-primary;
-        box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.1);
-      }
-    }
-  }
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 77, 64, 0.1);
+  min-height: 600px;
 }
 
-.submit-btn {
+/* Left Section - 50% */
+.contact-info-panel {
+  flex: 1;
+  background-color: var(--teal-dark);
+  color: white;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.label {
+  color: var(--teal-accent);
+  letter-spacing: 2px;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.contact-info-panel h2 {
+  font-size: 2.5rem;
+  margin: 10px 0 30px;
+}
+
+.address-details p {
+  line-height: 1.8;
+  color: var(--teal-light);
+  font-size: 1.1rem;
+}
+
+.map-wrapper {
+  margin-top: 40px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid var(--teal-primary);
+}
+
+/* Right Section - 50% */
+.contact-form-panel {
+  flex: 1;
+  padding: 60px;
+  background: #fcfdfd;
+}
+
+.contact-card h2 {
+  color: var(--teal-dark);
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+.form-subtitle {
+  color: #666;
+  margin-bottom: 40px;
+  font-size: 0.95rem;
+}
+
+/* Form Styling */
+.input-group {
+  margin-bottom: 25px;
+}
+
+.input-group label {
+  display: block;
+  font-weight: 600;
+  color: var(--teal-dark);
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.input-group input, 
+.input-group textarea {
   width: 100%;
-  padding: 1rem;
-  background: $teal-primary;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: white;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.input-group input:focus, 
+.input-group textarea:focus {
+  outline: none;
+  border-color: var(--teal-primary);
+  box-shadow: 0 0 0 3px var(--teal-light);
+}
+
+.btn-teal {
+  width: 100%;
+  padding: 15px;
+  background: var(--teal-primary);
   color: white;
   border: none;
-  border-radius: 8px;
-  font-weight: bold;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
+}
 
-  &:hover:not(:disabled) {
-    background: darken($teal-primary, 10%);
-    transform: translateY(-2px);
+.btn-teal:hover:not(:disabled) {
+  background: var(--teal-dark);
+  transform: translateY(-2px);
+}
+
+.btn-teal:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .contact-wrapper {
+    flex-direction: column;
   }
-
-  &:disabled {
-    background: $teal-border;
+  .contact-info-panel, .contact-form-panel {
+    padding: 40px;
   }
 }

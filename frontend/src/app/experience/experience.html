@@ -8,7 +8,7 @@
   <div class="timeline-wrapper">
     <div class="timeline-line"></div>
 
-    <div class="job-card" *ngFor="let job of workHistory()">
+    <div class="job-card" *ngFor="let job of workHistory">
       <div class="timeline-dot"></div>
 
       <div class="job-header">
@@ -18,9 +18,7 @@
         </div>
         <div class="meta-group">
           <span class="period badge-teal">{{ job.period }}</span>
-          <span class="location">
-            <span class="pin">📍</span> {{ job.location }}
-          </span>
+          <span class="location"><span class="pin">📍</span> {{ job.location }}</span>
         </div>
       </div>
 
@@ -30,16 +28,14 @@
         <div class="list-section">
           <h4><span class="icon">🚀</span> Key Projects</h4>
           <ul>
-            <li *ngFor="let project of job.projects">
-              {{ project }}
-            </li>
+            <li *ngFor="let project of job.projects">{{ project }}</li>
           </ul>
         </div>
 
         <div class="list-section">
-          <h4><span class="icon">🏆</span> Key Achievements</h4>
+          <h4><span class="icon">🏆</span> Achievements</h4>
           <ul>
-            <li *ngFor="let ach of job.achievements">
+            <li *ngFor="let ach of job.achievements" class="achievement-item">
               {{ ach }}
             </li>
           </ul>

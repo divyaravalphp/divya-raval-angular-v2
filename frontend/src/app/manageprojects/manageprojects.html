@@ -38,35 +38,19 @@
         <h3>{{ editMode() ? 'Edit Project' : 'New Project' }}</h3>
         <button (click)="isModalOpen.set(false)">×</button>
       </div>
-      
       <form [formGroup]="projectForm" (ngSubmit)="save()" class="modal-form">
         <input formControlName="title" placeholder="Project Title">
-        
-        <div class="form-row">
-          <input formControlName="company" placeholder="Company Name">
-          <input formControlName="category" placeholder="Category (e.g. FinTech)">
-        </div>
-
-        <div class="form-row">
-          <input formControlName="type_class" placeholder="Type (e.g. Web App)">
-          <input formControlName="link" placeholder="Project Link (URL)">
-        </div>
-
-        <textarea formControlName="description" placeholder="Project Description"></textarea>
-        
+        <input formControlName="category" placeholder="Category">
+        <textarea formControlName="description" placeholder="Description"></textarea>
         <input formControlName="features" placeholder="Features (comma separated)">
-        
         <select formControlName="status">
           <option value="development">Development</option>
           <option value="active">Active</option>
           <option value="archived">Archived</option>
         </select>
-
         <div class="modal-actions">
           <button type="button" (click)="isModalOpen.set(false)">Cancel</button>
-          <button type="submit" class="btn-teal" [disabled]="projectForm.invalid">
-            {{ editMode() ? 'Update Project' : 'Save Project' }}
-          </button>
+          <button type="submit" class="btn-teal" [disabled]="projectForm.invalid">Save</button>
         </div>
       </form>
     </div>

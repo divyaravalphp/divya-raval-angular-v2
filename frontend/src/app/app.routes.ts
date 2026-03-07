@@ -14,14 +14,9 @@ import { Dashboard } from './dashboard/dashboard';
 
 import { Personalinfo } from './personalinfo/personalinfo';
 import { Manageprojects } from './manageprojects/manageprojects';
-import { Managesociallinks } from './managesociallinks/managesociallinks';
-
-import { Manageexperiences } from './manageexperiences/manageexperiences';
- 
-
-import { AdminMessages } from './adminmessages/adminmessages';
 import { authGuard } from './auth/auth.guard';
- 
+
+
  
 export const routes: Routes = [
    { path: 'home', component: Home },
@@ -37,7 +32,7 @@ export const routes: Routes = [
     component: Login,
     title: 'Admin Login' 
   },
- 
+
   // 3. Protected Routes
   { 
     path: 'dashboard', 
@@ -46,9 +41,6 @@ export const routes: Routes = [
     children: [
       { path: 'profile', component: Personalinfo }, 
        { path: 'manageprojects', component: Manageprojects  }, 
-       { path: 'socials', component: Managesociallinks },  
-       { path: 'experience', component: Manageexperiences }, 
-       { path: 'messages', component: AdminMessages }, 
       { path: '', redirectTo: 'profile', pathMatch: 'full' }
     ],
     title: 'Admin Dashboard'

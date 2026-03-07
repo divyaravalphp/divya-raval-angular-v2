@@ -1,18 +1,19 @@
-<div class="home-wrapper page-section bg-teal-light" *ngIf="profileData() as profile " >
+<div class="home-wrapper page-section bg-teal-light">
   <section class="hero-section">
     <div class="container hero-container">
       
       <div class="hero-text">
-        <span class="badge">{{ profile.current_title }}</span>
-        <h1>{{ profile.full_name }}</h1>
+        <span class="badge">Senior Software Developer</span>
+        <h1>Divya Raval</h1>
         <p class="tagline">
-         {{ profile.summary }}
+          Results-driven developer with <strong>7 years of experience</strong>. 
+          Specializing in <strong>Laravel</strong>, <strong>MySQL</strong>, and <strong>RESTful APIs</strong> 
+          to build scalable, user-centric applications.
         </p>
         <div class="cta-group">
          
-         <a *ngIf="profile.resume"
-            [href]="'https://divya-raval-angular-v2.onrender.com/public/resumes/' + profile.resume" 
-            [download]="profile.resume" 
+          <a href="remote_divyaraval_laravel_php.pdf" 
+            download="remote_divyaraval_laravel_php.pdf" 
             class="btn-outline">
             Download CV
           </a>
@@ -21,9 +22,9 @@
 
       <div class="hero-image-area">
         <div class="image-stack">
-          <img *ngIf="profile.photo" [src]="'https://divya-raval-angular-v2.onrender.com/public/resumes/' + profile.photo"  alt="Divya Raval" class="main-profile-img">
+          <img src="photo.png" alt="Divya Raval" class="main-profile-img">
           <div class="floating-card experience">
-            <span class="stat-num">{{ profile.experience_years }}+</span>
+            <span class="stat-num">7+</span>
             <span class="stat-desc">Years Exp.</span>
           </div>
           <div class="floating-card tech">

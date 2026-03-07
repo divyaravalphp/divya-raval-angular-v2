@@ -39,7 +39,7 @@ export class Login {
           this.router.navigate(['/dashboard']);
         },
         error: (err) => { 
-          this.errorMessage.set(err.error?.message || 'Login Failed 123');
+          this.errorMessage.set(err.error?.message || 'Login Failed');
           this.isLoading.set(false);
         }
       });

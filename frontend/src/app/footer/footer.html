@@ -1,10 +1,10 @@
 <footer class="main-footer">
-  <div class="container" *ngIf="profileData() as profile">
+  <div class="container">
     <div class="footer-grid">
       <div class="footer-section brand-box">
-        <h3 class="footer-logo">{{ profile.full_name }}- {{ profile.current_title }}</h3>
+        <h3 class="footer-logo">DIVYA RAVAL - Senior PHP Architect & Full-Stack Developer</h3>
         <p class="brand-desc">
-          {{ profile.summary }}
+          Engineering scalable, secure, and high-performance digital ecosystems. With 7+ years of experience in the Laravel ecosystem and recent mastery in Angular and Node.js, I bridge the gap between complex backend logic and reactive frontend experiences.
         </p>
       </div>
 
@@ -13,19 +13,20 @@
         <ul class="contact-list">
           <li>
             <span class="icon">📧</span>
-            <a href="mailto:ravaldivyaks@gmail.com">{{ profile.email }}</a>
+           <a href="mailto:ravaldivyaks@gmail.com?subject=Inquiry from your portfolio">
+            ravaldivyaks@gmail.com
+          </a>
           </li>
           <li>
             <span class="icon">📞</span>
-            <a href="tel:+919725528865">{{ profile.phone }}</a>
+            <a href="tel:+919725528865">+91 9725528865</a>
           </li>
           <li class="address-item">
             <span class="icon">📍</span>
             <address>
-              {{ profile.address_line_1 }}<br>
-              <span *ngIf="profile.address_line_2">{{ profile.address_line_2 }}, </span>
-              {{ profile.city }} - {{ profile.zip_code }},<br>
-              {{ profile.state }}, India
+              501, Radhe Nandan Appartments,<br>
+              Near Suvidha Hospital, Sanand - 382110,<br>
+              Ahmedabad, Gujarat, India
             </address>
           </li>
         </ul>
@@ -34,19 +35,16 @@
       <div class="footer-section">
         <h4 class="section-title">CONNECT</h4>
         <div class="social-links">
-          <a *ngFor="let link of socialLinks()" 
-             [href]="link.url" 
-             target="_blank" 
-             class="social-btn">
-             <i *ngIf="link.icon_class" [class]="link.icon_class"></i>
-             {{ link.platform_name }}
-          </a>
+          <a href="https://linkedin.com/in/divya-raval-672594149/" target="_blank" class="social-btn">LinkedIn</a>
+          <a href="https://github.com/divyaravalphp" target="_blank" class="social-btn">GitHub</a>
+          <a href="live:ravaldivyaks" target="_blank" class="social-btn">Skype</a>
+          <a href="https://www.facebook.com/share/1AcnECYd1t/" target="_blank" class="social-btn">Facebook</a>
         </div>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; 2024–{{ currentYear() }} Divya Raval. All Rights Reserved. Built with Angular 21.</p>
+      <p>&copy; 2024–2026 Divya Raval. All Rights Reserved. Built with Angular 21.</p>
     </div>
   </div>
 </footer>

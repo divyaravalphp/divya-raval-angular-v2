@@ -6,7 +6,7 @@
 }
 
 .education-section {
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 80px 20px;
   font-family: 'Segoe UI', Roboto, sans-serif;
@@ -28,7 +28,7 @@
 
 .section-title {
   font-size: 2.2rem;
-  color: #008080;
+  color: var(--teal-dark);
   margin: 10px 0;
 }
 
@@ -116,7 +116,7 @@
 .card-inner h3 {
   margin: 0;
   font-size: 1.3rem;
-  color: #008080;
+  color: var(--teal-dark);
 }
 
 .institution {
@@ -130,7 +130,7 @@
   align-items: center;
   gap: 8px;
   padding: 6px 15px;
-  background: #008080;
+  background: var(--teal-dark);
   color: white;
   border-radius: 20px;
   font-size: 0.85rem;
@@ -142,15 +142,4 @@
   .timeline-item { gap: 15px; }
   .card-inner { padding: 20px; }
   .section-title { font-size: 1.8rem; }
-}
-
-.education-section {
-  /* A soft teal hex that complements light teal backgrounds */
-  border: 2px solid #b2dfdb; 
-  border-radius: 12px;       /* Gives it a modern, soft appearance */
-  
-  box-sizing: border-box;    /* Ensures padding doesn't break the width */
-  padding: 20px;             /* Ensures content doesn't touch the new border */ 
-  margin-top: 20px;
-  margin-bottom: 20px;
 }

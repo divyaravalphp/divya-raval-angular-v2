@@ -32,7 +32,7 @@
 
 .section-title {
   font-size: 2.5rem;
-  color: #008080;
+  color: var(--teal-dark);
   margin: 0;
   font-weight: 700;
 }
@@ -79,7 +79,7 @@
 /* Card Content */
 .badge {
   background: var(--teal-light);
-  color: #008080;
+  color: var(--teal-dark);
   padding: 4px 12px;
   border-radius: 20px;
   font-size: 0.75rem;
@@ -90,7 +90,7 @@
 .project-card h3 {
   margin: 15px 0;
   font-size: 1.5rem;
-  color: #008080;
+  color: var(--teal-dark);
 }
 
 .desc {
@@ -147,40 +147,4 @@
 @media (max-width: 768px) {
   .section-title { font-size: 2rem; }
   .projects-grid { grid-template-columns: 1fr; }
-}
-
-.projects-container {
-  /* Formal teal border */
-  border: 2px solid #008080; 
-  border-radius: 12px;
-  
-  /* Subtle background to make the section pop */
-  background-color: rgba(0, 128, 128, 0.02); 
-  
-  /* Spacing and shadow for depth */
-  padding: 40px 20px;
-  margin-top: 20px ;
-  margin-bottom: 20px ;
-  box-shadow: 0 4px 20px rgba(0, 128, 128, 0.08);
-  
-  /* Transition for a smooth feel */
-  transition: transform 0.3s ease;
-}
-
-/* Optional: Slight lift effect when viewing the section */
-.projects-container:hover {
-  border-color: #006666; /* Slightly darker teal on focus */
-}
-
-.section-header .top-label {
-  color: #008080; /* Match label to the theme */
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-.header-line {
-  background: #008080; /* Teal accent line */
-  height: 3px;
-  width: 60px;
-   
 }

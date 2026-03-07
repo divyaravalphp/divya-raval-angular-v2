@@ -7,34 +7,23 @@
       <ul>
         <li><a routerLink="./profile">Details - About</a></li>
         <li><a routerLink="/dashboard/manageprojects">Manage Projects</a></li>
-        
-        <li><a routerLink="/dashboard/socials">Manage Social Media</a></li>
-        <li><a routerLink="/dashboard/experience">Manage Experience</a></li>
-        <li><a routerLink="/dashboard/messages">Messages</a></li>
-         
+        <li><a routerLink="./settings">Settings</a></li>
       </ul>
     </nav>
   </aside>
 
   <div class="main-wrapper">
     <header class="top-bar">
-  <span>Welcome, Admin</span>
-  
-  <div class="header-actions">
-    <a routerLink="/dashboard/messages" class="message-badge-container">
-      <span class="icon">✉️</span>
-      @if (unrepliedCount() > 0) {
-        <span class="badge">{{ unrepliedCount() }}</span>
-      }
-    </a>
-
-    <button class="logout-btn" (click)="logout()">Logout</button>
-  </div>
-</header>
+      <span>Welcome, Admin</span>
+      <button class="logout-btn" (click)="logout()">Logout</button>
+    </header>
 
     <section class="content">
       <router-outlet></router-outlet>
-       
+      <div class="welcome-card">
+        <h2>Dashboard Overview</h2>
+        <p>Manage your PHP/Laravel portfolio and projects here.</p>
+      </div>
     </section>
   </div>
 </div>

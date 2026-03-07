@@ -6,7 +6,7 @@
 }
 
 .about-container {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 40px 20px;
 }
@@ -81,59 +81,5 @@ li {
   }
   .summary {
     grid-column: span 1;
-  }
-}
-
-.citations-section {
-  margin-top: 40px;
-  background-color: #f9fdfd; // Very light teal tint
-  border-left: 5px solid #b2dfdb; // Lighter teal border
-  
-  .citation-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-    color: #00796b;
-
-    h2 {
-      font-size: 1.1rem;
-      margin: 0;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-  }
-}
-
-.citation-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 15px;
-}
-
-.citation-item {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  font-size: 0.85rem;
-  line-height: 1.4;
-  color: #555;
-
-  .cite-number {
-    color: #008080;
-    font-weight: bold;
-    font-family: monospace;
-    flex-shrink: 0;
-  }
-
-  .cite-text {
-    font-style: italic;
-  }
-}
-
-// Adjust for mobile
-@media (max-width: 768px) {
-  .citation-grid {
-    grid-template-columns: 1fr;
   }
 }

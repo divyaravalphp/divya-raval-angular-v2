@@ -1,29 +1,15 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
-import { ApiService } from '../services/api';
+import { Component } from '@angular/core';
+
 @Component({
   selector: 'app-home',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
-export class Home implements OnInit {
-  private http = inject(HttpClient);
-  private apiService = inject(ApiService);
-  // Use a signal or a simple object to hold profile data
-  profileData = signal<any>(null);
+export class Home {
+  name: string = 'Divya Raval'; 
+  designation: string = 'PHP Laravel Developer';
+  imagePath: string = 'photo.png';
+  tagline: string ='Senior PHP/Laravel Developer/Codeigniter/cakePHP/Core PHP (7+ Yrs) | Backend Systems & REST APIs | MySQL & Payment Gateway Integration ';
 
-  ngOnInit() {
-    this.fetchProfile();
-  }
-
-  fetchProfile() {
-    this.apiService.getProfile().subscribe({
-      next: (data) => {
-        this.profileData.set(data);
-      },
-      error: (err) => console.error('Error fetching profile for home:', err)
-    });
-  }
 }

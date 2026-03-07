@@ -1,41 +1,36 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { ApiService } from '../services/api';
-interface EducationItem {
-  id?: number;
-  degree: string;
-  institution: string;
-  period: string;
-  result: string;
-}
-
 @Component({
   selector: 'app-education',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './education.html',
   styleUrl: './education.scss',
 })
-export class Education implements OnInit {
-  private http = inject(HttpClient);
-  private apiService = inject(ApiService);
-  
-  // Use a signal for the dynamic list
-  educationList = signal<EducationItem[]>([]);
-
-  ngOnInit() {
-    this.fetchEducation();
-  }
-
-  fetchEducation() {
-    // API endpoint for your education table
-     this.apiService.getEducation().subscribe({
-      next: (data) => {
-        this.educationList.set(data);
-      },
-      error: (err) => console.error('Failed to load education data:', err)
-    });
-  }
+export class Education {
+  educationList = [
+    {
+      degree: 'M.Sc. (CA & IT)',
+      institution: 'Gujarat University - K.S.School From Business Management',
+      period: '2013–2015',
+      result: '59.04% (Post-Graduation)'
+    },
+    {
+      degree: 'B.Sc. (CA & IT)',
+      institution: 'Gujarat University - K.S.School From Business Management',
+      period: '2010–2013',
+      result: '57.74% (Graduation)'
+    },
+    {
+      degree: 'H.S.C. (12th Grade)',
+      institution: 'Gujarat Secondary Education Board',
+      period: 'March 2010',
+      result: '84.43% (Distinction)'
+    },
+    {
+      degree: 'S.S.C. (10th Grade)',
+      institution: 'Gujarat Secondary Education Board',
+      period: 'March 2008',
+      result: '76.46% (Distinction)'
+    }
+  ];
 }

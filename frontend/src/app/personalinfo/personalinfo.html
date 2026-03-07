@@ -27,49 +27,56 @@
           <textarea formControlName="summary" rows="4"></textarea>
         </div>
 
-        <div class="form-group full-width">
-          <label>Profile Photo</label>
-          <div class="file-upload-wrapper">
-            <div *ngIf="currentPhoto" class="preview-container">
-              <div class="preview-card photo-accent">
-                <img [src]="'http://localhost:3000/public/resumes/' + currentPhoto" class="thumb-img">
-                <div class="text-group">
-                  <label>Current Photo</label>
-                  <span class="file-name">{{ currentPhoto }}</span>
-                </div>
-                <a [href]="'http://localhost:3000/public/resumes/' + currentPhoto" target="_blank" class="view-btn">View Full</a>
-              </div>
-            </div>
-            <input type="file" (change)="onPhotoSelected($event)" accept="image/*">
-            <small class="file-hint">Recommended: Square JPG or PNG</small>
-          </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input formControlName="email" type="email">
         </div>
 
-        <div class="form-group full-width">
-          <label>Resume (PDF or DOCX)</label>
-          <div class="file-upload-wrapper">
-            <div *ngIf="currentResume" class="preview-container">
-              <div class="preview-card resume-accent">
-                <span class="file-icon">📄</span>
-                <div class="text-group">
-                  <label>Current Resume</label>
-                  <span class="file-name">{{ currentResume }}</span>
-                </div>
-                <a [href]="'http://localhost:3000/public/resumes/' + currentResume" target="_blank" class="view-btn">Download</a>
-              </div>
-            </div>
-            <input type="file" (change)="onFileSelected($event)" accept=".pdf,.doc,.docx">
-            <small class="file-hint">Leave empty to keep current file</small>
-          </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input formControlName="phone" type="text">
         </div>
 
+        <div class="form-group">
+          <label>Address Line 1</label>
+          <input formControlName="address_line_1" type="text">
+        </div>
+
+        <div class="form-group">
+          <label>Address Line 2</label>
+          <input formControlName="address_line_2" type="text">
+        </div>
+
+        <div class="form-group">
+          <label>City</label>
+          <input formControlName="city" type="text">
+        </div>
+
+         <div class="form-group">
+          <label>State</label>
+          <input formControlName="state" type="state">
+        </div>
+
+        <div class="form-group">
+          <label>PIN code</label>
+          <input formControlName="zip_code" type="zip_code">
+        </div>
+
+        <div class="form-group">
+          <label>Experience (Years)</label>
+          <input formControlName="experience_years" type="number">
+        </div>
       </div>
 
       <div class="form-footer">
         <button type="submit" class="btn-save" [disabled]="isSubmitting()">
-          {{ isSubmitting() ? 'Saving Changes...' : 'Update Profile' }}
+          {{ isSubmitting() ? 'Saving...' : 'Update Profile' }}
         </button>
       </div>
     </form>
   </div>
+</div>
+
+<div style="background: #fff3cd; padding: 10px; margin-top: 20px; border: 1px solid #ffeeba;">
+  <strong>Debug Info:</strong> Status: {{ profileForm.status }} | ID: {{ profileForm.get('id')?.value }}
 </div>

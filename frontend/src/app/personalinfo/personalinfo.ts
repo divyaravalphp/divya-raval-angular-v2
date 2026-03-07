@@ -1,35 +1,22 @@
-import { Component, signal, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, inject, signal } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ProfileService } from '../auth/profile.service';
 
-import { ApiService } from '../services/api';
-
+ 
 @Component({
   selector: 'app-personalinfo',
-  standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+   imports: [ReactiveFormsModule],
   templateUrl: './personalinfo.html',
-  styleUrl: './personalinfo.scss'
+  styleUrl: './personalinfo.scss',
 })
 export class Personalinfo implements OnInit {
   private fb = inject(FormBuilder);
-  private http = inject(HttpClient);
-  private apiService = inject(ApiService);
-  currentResume: string | null = null;
-  currentPhoto: string | null = null;
-  selectedPhoto: File | null = null;
-  // Signals for state management
-  isSubmitting = signal(false);
-  successMsg = signal('');
+  private profileService = inject(ProfileService);
   
-  // File state
-  selectedFile: File | null = null;
-
   profileForm: FormGroup = this.fb.group({
-    id: [null],
+    id: [null], // Critical for the PUT request
     full_name: ['', Validators.required],
-    current_title: ['', Validators.required],
+    current_title: [''],
     summary: [''],
     email: ['', [Validators.required, Validators.email]],
     phone: [''],
@@ -41,78 +28,47 @@ export class Personalinfo implements OnInit {
     experience_years: [0]
   });
 
+  successMsg = signal('');
+  isSubmitting = signal(false);
+
   ngOnInit() {
-    this.fetchProfile();
+    this.loadProfile();
   }
 
-  fetchProfile() {
-  this.apiService.getProfile().subscribe({
-    next: (data) => {
-      this.profileForm.patchValue(data);
-      this.currentResume = data.resume; // Store the filename from the 'resume' column
-       this.currentPhoto = data.photo; // Store the filename from the 'resume' column
-    },
-    error: (err) => console.error('Fetch error', err)
-  });
-}
-
-  onFileSelected(event: any) {
-    const file: File = event.target.files[0];
-    if (file) {
-      this.selectedFile = file;
-    }
+  loadProfile() {
+    this.profileService.getProfile().subscribe((data: any) => {
+      // If backend returns an array, take the first item
+      const profile = Array.isArray(data) ? data[0] : data;
+      if (profile) {
+        this.profileForm.patchValue(profile);
+      }
+    });
   }
 
-  onPhotoSelected(event: any) {
-  const file: File = event.target.files[0];
-  if (file) {
-    this.selectedPhoto = file;
-  }
-}
+  onSubmit() {
+     if (this.profileForm.valid) {
+    this.isSubmitting.set(true);
+    
+    // Get the ID from the form (which we populated during loadProfile)
+    const id = this.profileForm.get('id')?.value;
 
- 
-onSubmit() {
-  if (this.profileForm.invalid) return;
-
-  this.isSubmitting.set(true);
-  const formData = new FormData();
-  
-  Object.keys(this.profileForm.controls).forEach(key => {
-    const value = this.profileForm.get(key)?.value;
-    if (value !== null && value !== undefined) {
-      formData.append(key, value);
-    }
-  });
-
-  if (this.selectedFile) {
-    formData.append('resume', this.selectedFile, this.selectedFile.name);
-  }
-  if (this.selectedPhoto) {
-    formData.append('photo', this.selectedPhoto, this.selectedPhoto.name);
-  }
-
-  const id = this.profileForm.get('id')?.value;
-  
-  this.apiService.updateProfile(id, formData).subscribe({
-    next: (res: any) => {
-      this.successMsg.set('Profile updated successfully!');
+    if (!id) {
+      console.error("Cannot update: Profile ID is missing");
       this.isSubmitting.set(false);
-      
-      // ✅ FIX: Update the view variables with the new filenames from the server
-      if (res.resume) this.currentResume = res.resume;
-      if (res.photo) this.currentPhoto = res.photo;
-
-      // Reset selection state
-      this.selectedFile = null;
-      this.selectedPhoto = null;
-
-      // Optional: Clear success message after 3 seconds
-      setTimeout(() => this.successMsg.set(''), 3000);
-    },
-    error: (err) => {
-      console.error('Update failed:', err);
-      this.isSubmitting.set(false);
+      return;
     }
-  });
-}
+
+    // Now this matches the Service definition: 2 arguments
+    this.profileService.updateProfile(id, this.profileForm.value).subscribe({
+      next: (res) => {
+        this.successMsg.set('Profile Updated Successfully!');
+        this.isSubmitting.set(false);
+      },
+      error: (err) => {
+        console.error("Update failed:", err);
+        this.isSubmitting.set(false);
+      }
+    });
+  }
+  }
 }
