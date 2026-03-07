@@ -10,13 +10,7 @@ Experience: Chronological, company-wise professional history.
 
 Education: Academic qualifications and certifications.
 
-Contact: * Integrated Google Maps with office/home address.
-
-Interactive contact form (Name, Phone, Email, Message).
-
-Automated email notifications and database storage for inquiries.
-
-Instant "Thank You" confirmation upon submission.
+Contact: * Integrated Google Maps with home address.  
 
 Global Elements: Persistent Header and Footer featuring social media links and contact details.
 
